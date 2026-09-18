@@ -1116,3 +1116,19 @@
             flashcardCurrentIndex = (flashcardCurrentIndex - 1 + VERB_PAIRS.length) % VERB_PAIRS.length;
             updateFlashcardUI();
         }
+
+        function playFlashcardBoth() {
+            const current = VERB_PAIRS[flashcardCurrentIndex];
+            playSpeech(`${current.verb1.word}. ${current.verb1.example}. ${current.verb2.word}. ${current.verb2.example}.`);
+        }
+
+        // Initialize App on DOM Load
+        window.onload = function() {
+            // Load Lucide Icons
+            lucide.createIcons();
+            // Render Study Cards
+            renderStudyCards();
+        }
+    </script>
+</body>
+</html>
