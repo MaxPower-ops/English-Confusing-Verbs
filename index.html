@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-50">
+<html lang="en" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mastering Confusing English Verb Pairs</title>
+    <title>Mastering Confusing English Verb Pairs (B2 Level)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -43,11 +43,10 @@
             transform: rotateY(180deg);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.9);
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -66,7 +65,7 @@
 </head>
 <body class="h-full flex flex-col font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white">
 
-    <!-- Top Banner & Navigation -->
+    <!-- Top Header and Navigation Banner -->
     <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -77,20 +76,20 @@
                     </div>
                     <div>
                         <h1 class="font-heading font-bold text-lg sm:text-xl tracking-tight leading-none text-white">
-                            Confusing Verb Pairs <span class="text-indigo-400 text-xs px-2 py-0.5 rounded-full bg-indigo-950/80 border border-indigo-700/50">UK 🇬🇧 Audio</span>
+                            Confusing Verb Pairs <span class="text-indigo-400 text-xs px-2 py-0.5 rounded-full bg-indigo-950/80 border border-indigo-700/50">UK 🇬🇧 Audio & IPA</span>
                         </h1>
-                        <p class="text-xs text-slate-400">Aprende y practica los pares de verbos confusos en inglés</p>
+                        <p class="text-xs text-slate-400">Master frequently confused English verbs with definitions, IPA & exercises</p>
                     </div>
                 </div>
 
-                <!-- Speech Speed & Voice Indicator -->
+                <!-- Speech Speed & Voice Controls -->
                 <div class="hidden sm:flex items-center space-x-3 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
                     <div class="flex items-center text-slate-300">
                         <i data-lucide="volume-2" class="w-4 h-4 mr-1.5 text-brand-500"></i>
                         <span>Accent: <strong class="text-white">British (en-GB)</strong></span>
                     </div>
                     <span class="text-slate-600">|</span>
-                    <label for="speedSelect" class="text-slate-400">Speed:</label>
+                    <label for="speedSelect" class="text-slate-400">Audio Speed:</label>
                     <select id="speedSelect" onchange="updateAudioSpeed(this.value)" class="bg-slate-900 text-slate-200 text-xs rounded px-2 py-0.5 border border-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-500">
                         <option value="0.75">0.75x (Slow)</option>
                         <option value="0.9" selected>0.9x (Normal)</option>
@@ -105,56 +104,56 @@
             <div class="max-w-7xl mx-auto flex space-x-2 sm:space-x-4 overflow-x-auto py-2">
                 <button onclick="switchTab('study')" id="tab-study" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-brand-600 text-white shadow-sm">
                     <i data-lucide="book-open" class="w-4 h-4"></i>
-                    <span>1. Study Library</span>
+                    <span>1. Study Library (21 Pairs)</span>
                 </button>
                 <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-800/60">
                     <i data-lucide="brain-circuit" class="w-4 h-4"></i>
-                    <span>2. Interactive Quiz</span>
+                    <span>2. Interactive Practice Quiz</span>
                 </button>
                 <button onclick="switchTab('flashcards')" id="tab-flashcards" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-800/60">
                     <i data-lucide="layers" class="w-4 h-4"></i>
-                    <span>3. Flashcards</span>
+                    <span>3. Flashcard Trainer</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content Container -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
         <!-- SECTION 1: STUDY LIBRARY -->
         <section id="section-study" class="space-y-6">
-            <!-- Search and Filter Bar -->
+            <!-- Search and Filter Header -->
             <div class="glass-card p-4 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div class="relative w-full md:w-96">
                     <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="searchInput" oninput="filterStudyCards()" placeholder="Search verbs (e.g., raise, borrow, make)..." class="w-full pl-9 pr-4 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                    <input type="text" id="searchInput" oninput="filterStudyCards()" placeholder="Search verbs (e.g. argue, discuss, borrow, win)..." class="w-full pl-9 pr-4 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
                 </div>
 
                 <div class="flex items-center justify-between w-full md:w-auto gap-3 text-xs text-slate-500">
                     <span id="pairsCount" class="font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200">
-                        Showing 15 Verb Pairs
+                        Showing 21 Verb Pairs
                     </span>
-                    <button onclick="playAllSampleAudio()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-medium transition-colors border border-indigo-200">
+                    <button onclick="playIntroAudio()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-medium transition-colors border border-indigo-200">
                         <i data-lucide="volume-2" class="w-4 h-4"></i>
                         <span>Test Audio Engine</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Verb Cards Container -->
+            <!-- Verb Cards Grid -->
             <div id="verbCardsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Dynamically populated via JavaScript -->
+                <!-- Injected dynamically via JavaScript -->
             </div>
         </section>
 
         <!-- SECTION 2: INTERACTIVE QUIZ -->
         <section id="section-quiz" class="hidden max-w-3xl mx-auto space-y-6">
-            <!-- Quiz Progress Header -->
+            <!-- Quiz Progress Box -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                    <h2 class="text-xl font-heading font-bold text-slate-900">Verb Pair Practice Quiz</h2>
-                    <p class="text-xs text-slate-500">Choose the correct verb to complete the British English sentence.</p>
+                    <h2 class="text-xl font-heading font-bold text-slate-900">Confusing Verbs Practice Quiz</h2>
+                    <p class="text-xs text-slate-500">Choose the correct verb to complete each British English sentence.</p>
                 </div>
                 <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
                     <div class="text-center px-4 py-2 bg-indigo-50 rounded-xl border border-indigo-100">
@@ -169,48 +168,46 @@
 
             <!-- Quiz Card -->
             <div id="quizCard" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-md space-y-6">
-                <!-- Question Header & Counter -->
                 <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                     <span id="questionCounter" class="text-xs font-bold tracking-wider uppercase text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
-                        Question 1 of 15
+                        Question 1 of 21
                     </span>
                     <span id="questionCategory" class="text-xs font-medium text-slate-400">
-                        Target Pair: borrow vs lend
+                        Target Pair: argue vs discuss
                     </span>
                 </div>
 
-                <!-- Sentence with blank -->
                 <div class="py-4">
                     <p id="quizSentence" class="text-lg sm:text-xl font-medium text-slate-800 leading-relaxed text-center">
-                        Can I ________ your umbrella for a few hours? It's raining outside.
+                        We need to ________ the new project details before making a decision.
                     </p>
                     <p id="quizSpanishHint" class="text-sm text-slate-500 text-center italic mt-2">
-                        ¿Puedo tomar prestado tu paraguas por unas horas?
+                        Necesitamos debatir/discutir tranquilamente los detalles del nuevo proyecto.
                     </p>
                 </div>
 
-                <!-- Multiple Choice Options -->
+                <!-- Multiple Choice Buttons -->
                 <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    <!-- Buttons inserted dynamically -->
+                    <!-- Options injected dynamically -->
                 </div>
 
-                <!-- Feedback Box -->
+                <!-- Feedback Area -->
                 <div id="quizFeedback" class="hidden p-4 rounded-xl border transition-all space-y-2">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span id="feedbackIcon"></span>
                             <h4 id="feedbackTitle" class="font-bold text-sm">Correct!</h4>
                         </div>
-                        <button id="listenSentenceBtn" onclick="" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
+                        <button id="listenSentenceBtn" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
                             <i data-lucide="volume-2" class="w-4 h-4"></i> Listen (UK)
                         </button>
                     </div>
                     <p id="feedbackExplanation" class="text-xs sm:text-sm text-slate-600 leading-normal">
-                        Explicación aquí...
+                        Explanation...
                     </p>
                 </div>
 
-                <!-- Next Button -->
+                <!-- Next Question Button -->
                 <div class="pt-2 flex justify-end">
                     <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-2">
                         <span>Next Question</span>
@@ -223,19 +220,19 @@
         <!-- SECTION 3: FLASHCARDS -->
         <section id="section-flashcards" class="hidden max-w-xl mx-auto space-y-6">
             <div class="text-center space-y-1">
-                <h2 class="text-xl font-heading font-bold text-slate-900">Interactive Flashcards</h2>
-                <p class="text-xs text-slate-500">Haz clic en la tarjeta para girarla y ver la explicación completa con audio.</p>
+                <h2 class="text-xl font-heading font-bold text-slate-900">Interactive Flashcard Trainer</h2>
+                <p class="text-xs text-slate-500">Click on the card to flip and reveal IPA, definitions, rules, and example audio.</p>
             </div>
 
-            <!-- Flashcard Container -->
+            <!-- Flashcard 3D Container -->
             <div class="perspective-1000 w-full h-80 cursor-pointer group" onclick="flipFlashcard()">
                 <div id="flashcardInner" class="relative w-full h-full duration-500 transform-style-3d shadow-lg rounded-2xl bg-white border border-slate-200">
                     
-                    <!-- FRONT OF CARD -->
+                    <!-- CARD FRONT -->
                     <div class="absolute inset-0 w-full h-full rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden bg-gradient-to-br from-white via-slate-50 to-indigo-50/30">
                         <div class="w-full flex justify-between items-center text-xs text-slate-400">
                             <span class="font-medium uppercase tracking-wider">Flashcard Pair</span>
-                            <span id="flashcardIndex">1 / 15</span>
+                            <span id="flashcardIndex">1 / 21</span>
                         </div>
 
                         <div class="space-y-4">
@@ -243,10 +240,10 @@
                                 <i data-lucide="help-circle" class="w-8 h-8"></i>
                             </div>
                             <h3 id="flashcardFrontTitle" class="text-2xl font-bold font-heading text-slate-900">
-                                borrow <span class="text-slate-400 font-light">vs</span> lend
+                                argue <span class="text-slate-400 font-light">vs</span> discuss
                             </h3>
                             <p class="text-xs text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 inline-block">
-                                ¿Cuál es la diferencia? (Haz clic para revelar)
+                                What is the difference? (Click to reveal)
                             </p>
                         </div>
 
@@ -255,38 +252,38 @@
                         </div>
                     </div>
 
-                    <!-- BACK OF CARD -->
+                    <!-- CARD BACK -->
                     <div class="absolute inset-0 w-full h-full rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden rotate-y-180 bg-white border-2 border-brand-500">
                         <div class="w-full flex justify-between items-center text-xs text-slate-400">
                             <span class="font-semibold text-brand-600 uppercase tracking-wider">Explanation & Pronunciation</span>
-                            <span id="flashcardIndexBack">1 / 15</span>
+                            <span id="flashcardIndexBack">1 / 21</span>
                         </div>
 
                         <div class="space-y-3 overflow-y-auto max-h-48 px-2 w-full text-left">
                             <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                                 <div class="flex items-center justify-between">
-                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb1">borrow</span>
-                                    <span class="text-xs font-mono text-slate-500" id="fcIpa1">/ˈbɒr.əʊ/</span>
+                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb1">argue</span>
+                                    <span class="text-xs font-mono text-slate-500" id="fcIpa1">/ˈɑːɡ.juː/</span>
                                     <button onclick="event.stopPropagation(); playSpeech(document.getElementById('fcVerb1').innerText)" class="p-1 text-brand-600 hover:bg-brand-100 rounded">
                                         <i data-lucide="volume-2" class="w-4 h-4"></i>
                                     </button>
                                 </div>
-                                <p class="text-xs text-slate-600" id="fcSpan1">Tomar prestado (pedir)</p>
+                                <p class="text-xs text-slate-600" id="fcSpan1">Speak angrily to someone</p>
                             </div>
 
                             <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                                 <div class="flex items-center justify-between">
-                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb2">lend</span>
-                                    <span class="text-xs font-mono text-slate-500" id="fcIpa2">/lend/</span>
+                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb2">discuss</span>
+                                    <span class="text-xs font-mono text-slate-500" id="fcIpa2">/dɪˈskʌs/</span>
                                     <button onclick="event.stopPropagation(); playSpeech(document.getElementById('fcVerb2').innerText)" class="p-1 text-brand-600 hover:bg-brand-100 rounded">
                                         <i data-lucide="volume-2" class="w-4 h-4"></i>
                                     </button>
                                 </div>
-                                <p class="text-xs text-slate-600" id="fcSpan2">Prestar (dar a préstamo)</p>
+                                <p class="text-xs text-slate-600" id="fcSpan2">Talk about something calmly</p>
                             </div>
 
                             <div class="p-2 bg-indigo-50/80 rounded-lg text-xs text-indigo-950 font-medium">
-                                💡 <span id="fcRule">Regla rápida: You borrow FROM someone, you lend TO someone.</span>
+                                💡 <span id="fcRule">Rule: Argue = conflict; Discuss = peaceful talk.</span>
                             </div>
                         </div>
 
@@ -298,7 +295,7 @@
                 </div>
             </div>
 
-            <!-- Flashcard Navigation Controls -->
+            <!-- Flashcard Navigation -->
             <div class="flex items-center justify-between pt-4">
                 <button onclick="prevFlashcard()" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-medium text-xs rounded-xl shadow-sm hover:bg-slate-50 flex items-center gap-2">
                     <i data-lucide="chevron-left" class="w-4 h-4"></i> Previous
@@ -315,401 +312,598 @@
     </main>
 
     <script>
-        // Data Structure for Confusing Verbs with Spanish Translations, British IPA, Rules, and Quizzes
+        // Data Structure for all 21 Confusing Verb Pairs (English File B2 Curriculum)
         const VERB_PAIRS = [
             {
                 id: 1,
                 verb1: {
+                    word: "argue",
+                    ipa: "/ˈɑːɡ.juː/",
+                    definitionEn: "To speak angrily to someone because you disagree",
+                    spanish: "Discutir / Pelear verbalmente",
+                    example: "I often argue with my brother about football.",
+                    exampleEs: "A menudo discuto con mi hermano sobre fútbol."
+                },
+                verb2: {
+                    word: "discuss",
+                    ipa: "/dɪˈskʌs/",
+                    definitionEn: "To talk about something calmly or seriously",
+                    spanish: "Debatir / Hablar tranquilamente de un tema",
+                    example: "We need to discuss the new budget before making a decision.",
+                    exampleEs: "Necesitamos hablar tranquilamente sobre el nuevo presupuesto antes de tomar una decisión."
+                },
+                ruleEs: "'Argue' implica conflicto o enojo. 'Discuss' es una conversación pausada o formal.",
+                ruleEn: "'Argue' implies conflict and anger. 'Discuss' means talking calmly or constructively.",
+                quiz: {
+                    sentence: "I need to ________ the problem with my boss tomorrow.",
+                    sentenceEs: "Necesito hablar sobre el problema con mi jefe mañana de manera calmada.",
+                    correct: "discuss",
+                    options: ["argue", "discuss"],
+                    explanation: "Usamos 'discuss' porque se trata de hablar sobre un problema de manera constructiva y tranquila con el jefe."
+                }
+            },
+            {
+                id: 2,
+                verb1: {
+                    word: "notice",
+                    ipa: "/ˈnəʊ.tɪs/",
+                    spanish: "Notar / Percibir con los sentidos (vista, oído)",
+                    definitionEn: "To see, hear, or observe something with your senses",
+                    example: "I didn't notice that Karen had changed her hair color.",
+                    exampleEs: "No me di cuenta (no noté con los ojos) que Karen se había cambiado el color de pelo."
+                },
+                verb2: {
+                    word: "realize",
+                    ipa: "/ˈrɪə.laɪz/",
+                    spanish: "Darse cuenta (comprender mentalmente)",
+                    definitionEn: "To understand or become aware of a fact mentally",
+                    example: "I didn't realize you were so unhappy with your job.",
+                    exampleEs: "No me di cuenta (no comprendía en mi mente) que estabas tan infeliz con tu trabajo."
+                },
+                ruleEs: "'Notice' es percibir físicamente (ver u oír). 'Realize' es un proceso mental de comprensión.",
+                ruleEn: "'Notice' is sensory perception. 'Realize' is mental awareness.",
+                quiz: {
+                    sentence: "Did you ________ that new sign on the wall when you walked in?",
+                    sentenceEs: "¿Notaste (viste con tus ojos) ese nuevo letrero en la pared cuando entraste?",
+                    correct: "notice",
+                    options: ["notice", "realize"],
+                    explanation: "Usamos 'notice' porque se refiere a percibir algo visualmente con la vista."
+                }
+            },
+            {
+                id: 3,
+                verb1: {
+                    word: "avoid",
+                    ipa: "/əˈvɔɪd/",
+                    spanish: "Evitar / Esquivar (tratar de no hacer algo)",
+                    definitionEn: "To try not to do something or stay away from someone",
+                    example: "Jack always tries to avoid arguing with his parents.",
+                    exampleEs: "Jack siempre intenta evitar discutir con sus padres."
+                },
+                verb2: {
+                    word: "prevent",
+                    ipa: "/prɪˈvent/",
+                    spanish: "Prevenir / Impedir que algo ocurra",
+                    definitionEn: "To stop something from happening or stop someone from doing something",
+                    example: "Wearing seatbelts helps to prevent severe injuries.",
+                    exampleEs: "Usar cinturón de seguridad ayuda a prevenir heridas graves."
+                },
+                ruleEs: "'Avoid' es esquivar algo tú mismo. 'Prevent' es detener un hecho antes de que pase.",
+                ruleEn: "'Avoid' means staying away from something. 'Prevent' means stopping an action from happening.",
+                quiz: {
+                    sentence: "My parents tried to ________ me from going to the party.",
+                    sentenceEs: "Mis padres intentaron impedirme ir a la fiesta.",
+                    correct: "prevent",
+                    options: ["avoid", "prevent"],
+                    explanation: "Usamos 'prevent someone from doing something' para indicar que se impide una acción."
+                }
+            },
+            {
+                id: 4,
+                verb1: {
                     word: "borrow",
                     ipa: "/ˈbɒr.əʊ/",
                     spanish: "Tomar prestado / Pedir prestado",
+                    definitionEn: "To take something from someone intending to return it",
                     example: "Can I borrow your pen for a second?",
                     exampleEs: "¿Puedo tomar prestada tu pluma por un segundo?"
                 },
                 verb2: {
                     word: "lend",
                     ipa: "/lend/",
-                    spanish: "Prestar (dar prestado)",
+                    spanish: "Prestar (dar a préstamo)",
+                    definitionEn: "To give something to someone temporarily",
                     example: "Could you lend me £10 until tomorrow?",
                     exampleEs: "¿Podrías prestarme £10 hasta mañana?"
                 },
                 ruleEs: "Toma prestado ('borrow') ALGUIEN DE ti. Prestas ('lend') TÚ A alguien.",
                 ruleEn: "You borrow FROM someone. You lend TO someone.",
                 quiz: {
-                    sentence: "I left my money at home. Could you ________ me some cash for lunch?",
-                    sentenceEs: "Dejé mi dinero en casa. ¿Podrías prestarme algo de efectivo para el almuerzo?",
+                    sentence: "I left my wallet at home. Could you ________ me some cash?",
+                    sentenceEs: "Dejé mi billetera en casa. ¿Podrías prestarme algo de efectivo?",
                     correct: "lend",
                     options: ["borrow", "lend"],
                     explanation: "Usamos 'lend' porque la persona te va a dar el dinero a ti (lend to me)."
                 }
             },
             {
-                id: 2,
-                verb1: {
-                    word: "raise",
-                    ipa: "/reɪz/",
-                    spanish: "Levantar / Elevar (requiere objeto)",
-                    example: "Please raise your hand if you have a question.",
-                    exampleEs: "Por favor levanta la mano si tienes alguna pregunta."
-                },
-                verb2: {
-                    word: "rise",
-                    ipa: "/raɪz/",
-                    spanish: "Subir / Elevarse (no requiere objeto)",
-                    example: "The sun rises in the east every morning.",
-                    exampleEs: "El sol sale (se eleva) en el este cada mañana."
-                },
-                ruleEs: "'Raise' necesita un objeto directo (Raise something). 'Rise' ocurre por sí mismo (Something rises).",
-                ruleEn: "'Raise' takes a direct object. 'Rise' does not take an object.",
-                quiz: {
-                    sentence: "Prices of food continue to ________ rapidly due to inflation.",
-                    sentenceEs: "Los precios de la comida continúan subiendo rápidamente debido a la inflación.",
-                    correct: "rise",
-                    options: ["raise", "rise"],
-                    explanation: "Usamos 'rise' porque los precios suben por sí solos sin un objeto directo detrás del verbo."
-                }
-            },
-            {
-                id: 3,
-                verb1: {
-                    word: "lay",
-                    ipa: "/leɪ/",
-                    spanish: "Poner / Colocar (algo cuidadosamente / la mesa)",
-                    example: "Please lay the books flat on the table.",
-                    exampleEs: "Por favor coloca los libros planos sobre la mesa."
-                },
-                verb2: {
-                    word: "lie",
-                    ipa: "/laɪ/",
-                    spanish: "Estar tumbado / Acostarse (también: Mentir)",
-                    example: "I just want to lie on the beach all day.",
-                    exampleEs: "Solo quiero tumbarme en la playa todo el día."
-                },
-                ruleEs: "'Lay' requiere colocar algo (Lay something). 'Lie' es recostarse uno mismo.",
-                ruleEn: "'Lay' requires a direct object (lay something down). 'Lie' means to recline.",
-                quiz: {
-                    sentence: "If you feel dizzy, go and ________ down on the bed.",
-                    sentenceEs: "Si te sientes mareado, ve y túmbate en la cama.",
-                    correct: "lie",
-                    options: ["lay", "lie"],
-                    explanation: "Usamos 'lie' porque significa recostarse uno mismo."
-                }
-            },
-            {
-                id: 4,
-                verb1: {
-                    word: "remember",
-                    ipa: "/rɪˈmem.bər/",
-                    spanish: "Acordarse de / Recordar (tener el recuerdo)",
-                    example: "I remember meeting him in London two years ago.",
-                    exampleEs: "Recuerdo haberlo conocido en Londres hace dos años."
-                },
-                verb2: {
-                    word: "remind",
-                    ipa: "/rɪˈmaɪnd/",
-                    spanish: "Recordar a alguien (hacer que otro recuerde)",
-                    example: "Please remind me to call my mother later.",
-                    exampleEs: "Por favor recuérdame llamar a mi madre más tarde."
-                },
-                ruleEs: "'Remember' viene de tu propia mente. 'Remind' es cuando alguien o algo ayuda a tu memoria.",
-                ruleEn: "'Remember' is internal memory. 'Remind' is making someone else remember.",
-                quiz: {
-                    sentence: "That song always ________ me of my summer holidays in Scotland.",
-                    sentenceEs: "Esa canción siempre me recuerda mis vacaciones de verano en Escocia.",
-                    correct: "reminds",
-                    options: ["remembers", "reminds"],
-                    explanation: "Usamos 'remind' porque la canción hace que te acuerdes de algo (remind someone of something)."
-                }
-            },
-            {
                 id: 5,
-                verb1: {
-                    word: "say",
-                    ipa: "/seɪ/",
-                    spanish: "Decir (decir palabras sin objeto directo de persona)",
-                    example: "She said that she was going to be late.",
-                    exampleEs: "Ella dijo que iba a llegar tarde."
-                },
-                verb2: {
-                    word: "tell",
-                    ipa: "/tel/",
-                    spanish: "Decir / Contar (decirle A alguien)",
-                    example: "He told me a funny joke yesterday.",
-                    exampleEs: "Él me contó un chiste divertido ayer."
-                },
-                ruleEs: "'Say' NO requiere persona directamente (say something). 'Tell' exige la persona a quien se le dice (tell SOMEONE something).",
-                ruleEn: "You say something, but you tell SOMEONE something.",
-                quiz: {
-                    sentence: "Did she ________ you what time the train arrives in London?",
-                    sentenceEs: "¿Te dijo ella a qué hora llega el tren a Londres?",
-                    correct: "tell",
-                    options: ["say", "tell"],
-                    explanation: "Usamos 'tell' porque incluye el objeto de persona ('you'). Decimos 'tell you', no 'say you'."
-                }
-            },
-            {
-                id: 6,
-                verb1: {
-                    word: "rob",
-                    ipa: "/rɒb/",
-                    spanish: "Robar a (una persona o lugar)",
-                    example: "Thieves robbed the central bank last night.",
-                    exampleEs: "Los ladrones robaron el banco central anoche."
-                },
-                verb2: {
-                    word: "steal",
-                    ipa: "/stiːl/",
-                    spanish: "Robar (un objeto o dinero)",
-                    example: "Someone stole my bicycle from outside the café.",
-                    exampleEs: "Alguien robó mi bicicleta afuera del café."
-                },
-                ruleEs: "Robas A una persona o lugar (Rob a bank/person). Robas UN objeto (Steal money/a car).",
-                ruleEn: "You rob a person or place. You steal an object or item.",
-                quiz: {
-                    sentence: "The mugger threatened him and ________ his expensive watch.",
-                    sentenceEs: "El asaltante lo amenazó y le robó su reloj costoso.",
-                    correct: "stole",
-                    options: ["robbed", "stole"],
-                    explanation: "Usamos 'stole' (pasado de steal) porque el objeto robado es 'his expensive watch'."
-                }
-            },
-            {
-                id: 7,
-                verb1: {
-                    word: "win",
-                    ipa: "/wɪn/",
-                    spanish: "Ganar (un juego, premio, competencia, partido)",
-                    example: "England won the football match 2-1.",
-                    exampleEs: "Inglaterra ganó el partido de fútbol 2-1."
-                },
-                verb2: {
-                    word: "earn",
-                    ipa: "/ɜːn/",
-                    spanish: "Ganar (dinero con trabajo / salario)",
-                    example: "She earns a good salary working in finance.",
-                    exampleEs: "Ella gana un buen salario trabajando en finanzas."
-                },
-                ruleEs: "'Win' es para premios o competiciones. 'Earn' es para dinero ganado con esfuerzo o trabajo.",
-                ruleEn: "You win a prize, game, or race. You earn money or a salary through work.",
-                quiz: {
-                    sentence: "He worked overtime this week to ________ extra money for his trip.",
-                    sentenceEs: "Trabajó horas extra esta semana para ganar dinero adicional para su viaje.",
-                    correct: "earn",
-                    options: ["win", "earn"],
-                    explanation: "Usamos 'earn' porque se trata de ganar dinero a través del trabajo."
-                }
-            },
-            {
-                id: 8,
-                verb1: {
-                    word: "bring",
-                    ipa: "/brɪŋ/",
-                    spanish: "Traer (hacia el hablante)",
-                    example: "Please bring me a cup of tea, dear.",
-                    exampleEs: "Por favor tráeme una taza de té, querido."
-                },
-                verb2: {
-                    word: "take",
-                    ipa: "/teɪk/",
-                    spanish: "Llevar (desde el hablante hacia otro sitio)",
-                    example: "Don't forget to take an umbrella when you go out.",
-                    exampleEs: "No olvides llevar un paraguas cuando salgas."
-                },
-                ruleEs: "'Bring' es mover hacia el lugar donde estás. 'Take' es mover lejos de donde estás.",
-                ruleEn: "'Bring' moves towards the speaker. 'Take' moves away from the speaker.",
-                quiz: {
-                    sentence: "When you come to my house tonight, please ________ some wine.",
-                    sentenceEs: "Cuando vengas a mi casa esta noche, por favor trae algo de vino.",
-                    correct: "bring",
-                    options: ["bring", "take"],
-                    explanation: "Usamos 'bring' porque el movimiento es hacia donde estará el hablante (mi casa)."
-                }
-            },
-            {
-                id: 9,
-                verb1: {
-                    word: "hear",
-                    ipa: "/hɪər/",
-                    spanish: "Oír (percibir sonidos de forma involuntaria)",
-                    example: "Did you hear that strange noise outside?",
-                    exampleEs: "¿Oíste ese ruido extraño afuera?"
-                },
-                verb2: {
-                    word: "listen",
-                    ipa: "/ˈlɪs.ən/",
-                    spanish: "Escuchar (prestar atención activamente)",
-                    example: "I love listening to British podcasts while walking.",
-                    exampleEs: "Me encanta escuchar podcasts británicos mientras camino."
-                },
-                ruleEs: "'Hear' es pasivo (receptivo con los oídos). 'Listen' es activo (requiere atención y la preposición 'to').",
-                ruleEn: "'Hear' is passive perception. 'Listen (to)' is paying active attention.",
-                quiz: {
-                    sentence: "Please ________ carefully to the instructions before starting.",
-                    sentenceEs: "Por favor escucha atentamente las instrucciones antes de empezar.",
-                    correct: "listen",
-                    options: ["hear", "listen"],
-                    explanation: "Usamos 'listen' porque requiere atención activa hacia las instrucciones."
-                }
-            },
-            {
-                id: 10,
-                verb1: {
-                    word: "expect",
-                    ipa: "/ɪkˈspekt/",
-                    spanish: "Esperar (suponer que algo ocurrirá)",
-                    example: "We expect the train to arrive on time at 4 PM.",
-                    exampleEs: "Esperamos que el tren llegue a tiempo a las 4 PM."
-                },
-                verb2: {
-                    word: "wait",
-                    ipa: "/weɪt/",
-                    spanish: "Esperar (dejar pasar el tiempo)",
-                    example: "I had to wait for 30 minutes at the bus stop.",
-                    exampleEs: "Tuve que esperar 30 minutos en la parada de autobús."
-                },
-                ruleEs: "'Expect' es expectativa mental. 'Wait' es el paso físico del tiempo.",
-                ruleEn: "'Expect' means anticipating mentally. 'Wait' means staying somewhere until time passes.",
-                quiz: {
-                    sentence: "I am at the restaurant; I will ________ for you inside.",
-                    sentenceEs: "Estoy en el restaurante; te esperaré adentro.",
-                    correct: "wait",
-                    options: ["expect", "wait"],
-                    explanation: "Usamos 'wait' porque significa dejar pasar el tiempo físicamente en un lugar."
-                }
-            },
-            {
-                id: 11,
-                verb1: {
-                    word: "advise",
-                    ipa: "/ədˈvaɪz/",
-                    spanish: "Aconsejar (dar un consejo - verbo con S)",
-                    example: "The doctor advised me to rest for three days.",
-                    exampleEs: "El médico me aconsejó descansar durante tres días."
-                },
-                verb2: {
-                    word: "warn",
-                    ipa: "/wɔːn/",
-                    spanish: "Advertir / Prevenir sobre un peligro",
-                    example: "They warned us about the icy roads.",
-                    exampleEs: "Nos advirtieron sobre las carreteras heladas."
-                },
-                ruleEs: "'Advise' es sugerir lo mejor. 'Warn' es alertar de algo malo o peligroso.",
-                ruleEn: "'Advise' is giving recommendations. 'Warn' is alerting about potential danger.",
-                quiz: {
-                    sentence: "The lifeguard ________ the swimmers about the strong currents in the sea.",
-                    sentenceEs: "El salvavidas advirtió a los nadadores sobre las fuertes corrientes en el mar.",
-                    correct: "warned",
-                    options: ["advised", "warned"],
-                    explanation: "Usamos 'warned' porque advierte sobre un peligro potencial (fuertes corrientes)."
-                }
-            },
-            {
-                id: 12,
-                verb1: {
-                    word: "refuse",
-                    ipa: "/rɪˈfjuːz/",
-                    spanish: "Rechazar / Negarse a hacer algo",
-                    example: "He refused to pay for the damaged food.",
-                    exampleEs: "Él se negó a pagar por la comida dañada."
-                },
-                verb2: {
-                    word: "deny",
-                    ipa: "/dɪˈnaɪ/",
-                    spanish: "Denegar / Negar una acusación o verdad",
-                    example: "The suspect denied breaking the window.",
-                    exampleEs: "El sospechoso negó haber roto la ventana."
-                },
-                ruleEs: "'Refuse' es decir 'no quiero hacerlo'. 'Deny' es decir 'yo no fui / eso no es verdad'.",
-                ruleEn: "'Refuse' is choosing not to do something. 'Deny' is stating that something isn't true.",
-                quiz: {
-                    sentence: "The politician ________ taking any bribes during his campaign.",
-                    sentenceEs: "El político negó haber aceptado sobornos durante su campaña.",
-                    correct: "denied",
-                    options: ["refused", "denied"],
-                    explanation: "Usamos 'denied' porque está negando una afirmación o acusación de que ocurrió algo."
-                }
-            },
-            {
-                id: 13,
-                verb1: {
-                    word: "hope",
-                    ipa: "/həʊp/",
-                    spanish: "Esperar (desear algo positivo y posible)",
-                    example: "I hope it doesn't rain during our picnic.",
-                    exampleEs: "Espero que no llueva durante nuestro picnic."
-                },
-                verb2: {
-                    word: "wish",
-                    ipa: "/wɪʃ/",
-                    spanish: "Desear (algo imposible o difícil de cambiar)",
-                    example: "I wish I could fly to Tokyo right now.",
-                    exampleEs: "Desearía poder volar a Tokio en este momento."
-                },
-                ruleEs: "'Hope' es un deseo realista en el presente/futuro. 'Wish' expresa deseos hipotéticos o arrepentimientos.",
-                ruleEn: "'Hope' is for realistic expectations. 'Wish' is for hypothetical or impossible desires.",
-                quiz: {
-                    sentence: "I ________ you good luck in your final British English exam tomorrow!",
-                    sentenceEs: "¡Te deseo buena suerte en tu examen final de inglés británico mañana!",
-                    correct: "wish",
-                    options: ["hope", "wish"],
-                    explanation: "Usamos 'wish' para expresiones fijas de buenos deseos directos ('wish you good luck')."
-                }
-            },
-            {
-                id: 14,
                 verb1: {
                     word: "mind",
                     ipa: "/maɪnd/",
-                    spanish: "Importar / Molestar (tener inconveniente)",
-                    example: "Do you mind if I open the window?",
-                    exampleEs: "¿Te importa si abro la ventana?"
+                    spanish: "Importar / Molestar (tener objeción personal)",
+                    definitionEn: "To feel annoyed or object to something (used with people)",
+                    example: "My parents don't mind if I stay out late.",
+                    exampleEs: "A mis padres no les molesta si me quedo hasta tarde."
                 },
                 verb2: {
                     word: "matter",
                     ipa: "/ˈmæt.ər/",
-                    spanish: "Importar (ser importante / relevante)",
-                    example: "It doesn't matter if you are a few minutes late.",
-                    exampleEs: "No importa si llegas unos minutos tarde."
+                    spanish: "Importar (ser importante o problemático)",
+                    definitionEn: "To be important or cause a problem (used with situations)",
+                    example: "It doesn't matter if we are five minutes late.",
+                    exampleEs: "No importa (no es grave) si llegamos cinco minutos tarde."
                 },
-                ruleEs: "'Mind' se usa con personas (I don't mind = no me molesta). 'Matter' se usa con situaciones (It matters = es importante).",
-                ruleEn: "'Mind' expresses personal annoyance or objection. 'Matter' expresses importance or impact.",
+                ruleEs: "'Mind' expresa molestia personal (I don't mind). 'Matter' expresa relevancia de la situación (It doesn't matter).",
+                ruleEn: "'Mind' is personal objection. 'Matter' is importance or consequence.",
                 quiz: {
-                    sentence: "Don't worry about making mistakes; it really doesn't ________.",
-                    sentenceEs: "No te preocupes por cometer errores; realmente no importa.",
+                    sentence: "Don't worry about making a small mistake; it really doesn't ________.",
+                    sentenceEs: "No te preocupes por cometer un pequeño error; realmente no importa.",
                     correct: "matter",
                     options: ["mind", "matter"],
                     explanation: "Usamos 'matter' porque se refiere a la importancia de la situación ('it doesn't matter')."
                 }
             },
             {
+                id: 6,
+                verb1: {
+                    word: "remember",
+                    ipa: "/rɪˈmem.bər/",
+                    spanish: "Recordar / Acordarse (mantener en la memoria)",
+                    definitionEn: "To keep in mind or not forget something",
+                    example: "Remember to turn off the lights before leaving.",
+                    exampleEs: "Recuerda apagar las luces antes de salir."
+                },
+                verb2: {
+                    word: "remind",
+                    ipa: "/rɪˈmaɪnd/",
+                    spanish: "Recordar a alguien (hacer que otro recuerde)",
+                    definitionEn: "To help someone else remember or bring to mind",
+                    example: "Can you remind me to call my mother later?",
+                    exampleEs: "¿Puedes recordarme llamar a mi madre más tarde?"
+                },
+                ruleEs: "'Remember' nace de tu propia mente. 'Remind' es hacer que otra persona se acuerde.",
+                ruleEn: "'Remember' is internal recall. 'Remind' is making someone else remember.",
+                quiz: {
+                    sentence: "Please ________ me to buy milk on our way home.",
+                    sentenceEs: "Por favor recuérdame comprar leche de camino a casa.",
+                    correct: "remind",
+                    options: ["remember", "remind"],
+                    explanation: "Usamos 'remind' porque le pides a alguien que te ayude a recordar (remind me)."
+                }
+            },
+            {
+                id: 7,
+                verb1: {
+                    word: "expect",
+                    ipa: "/ɪkˈspekt/",
+                    spanish: "Esperar / Suponer que algo ocurrirá",
+                    definitionEn: "To think or believe that something will happen",
+                    example: "I expect that Daniel will arrive on time today.",
+                    exampleEs: "Espero (supongo) que Daniel llegará a tiempo hoy."
+                },
+                verb2: {
+                    word: "wait",
+                    ipa: "/weɪt/",
+                    spanish: "Esperar (dejar pasar el tiempo físicamente)",
+                    definitionEn: "To stay where you are until something happens",
+                    example: "We had to wait half an hour for the next train.",
+                    exampleEs: "Tuvimos que esperar media hora por el siguiente tren."
+                },
+                ruleEs: "'Expect' es expectativa mental. 'Wait' es aguardar físicamente el paso del tiempo.",
+                ruleEn: "'Expect' is mental anticipation. 'Wait' is staying in place over time.",
+                quiz: {
+                    sentence: "I will ________ for you outside the station until you arrive.",
+                    sentenceEs: "Te esperaré afuera de la estación hasta que llegues.",
+                    correct: "wait",
+                    options: ["expect", "wait"],
+                    explanation: "Usamos 'wait' porque implica aguardar físicamente en un sitio."
+                }
+            },
+            {
+                id: 8,
+                verb1: {
+                    word: "wish",
+                    ipa: "/wɪʃ/",
+                    spanish: "Desear (algo imposible o poco probable)",
+                    definitionEn: "To want something to be true even if unlikely/impossible",
+                    example: "I wish I had enough money to buy a bigger house.",
+                    exampleEs: "Desearía tener suficiente dinero para comprar una casa más grande."
+                },
+                verb2: {
+                    word: "hope",
+                    ipa: "/həʊp/",
+                    spanish: "Esperar / Desear (algo posible y realista)",
+                    definitionEn: "To want something good to happen that is possible",
+                    example: "I hope that you can come to my party on Friday.",
+                    exampleEs: "Espero que puedas venir a mi fiesta el viernes."
+                },
+                ruleEs: "'Wish' expresa hipotéticos o irrealidades. 'Hope' expresa deseos futuros realistas.",
+                ruleEn: "'Wish' is for hypothetical or impossible desires. 'Hope' is for realistic expectations.",
+                quiz: {
+                    sentence: "I ________ it doesn't rain during our picnic tomorrow.",
+                    sentenceEs: "Espero que no llueva durante nuestro picnic mañana.",
+                    correct: "hope",
+                    options: ["wish", "hope"],
+                    explanation: "Usamos 'hope' porque es una posibilidad real para el tiempo de mañana."
+                }
+            },
+            {
+                id: 9,
+                verb1: {
+                    word: "beat",
+                    ipa: "/biːt/",
+                    spanish: "Vencer / Ganar A (un rival o equipo)",
+                    definitionEn: "To defeat an opponent or rival team in a game",
+                    example: "Arsenal beat Manchester United 5-2.",
+                    exampleEs: "El Arsenal venció al Manchester United 5-2."
+                },
+                verb2: {
+                    word: "win",
+                    ipa: "/wɪn/",
+                    spanish: "Ganar (un partido, premio, medalla, juego)",
+                    definitionEn: "To be successful in a competition, game, or lottery",
+                    example: "Arsenal won the football match 5-2.",
+                    exampleEs: "El Arsenal ganó el partido de fútbol 5-2."
+                },
+                ruleEs: "Vences A alguien (Beat someone/a team). Ganas ALGO (Win a game/a prize).",
+                ruleEn: "You beat an opponent. You win a game, match, or prize.",
+                quiz: {
+                    sentence: "Our team played amazingly and managed to ________ the match.",
+                    sentenceEs: "Nuestro equipo jugó increíblemente y logró ganar el partido.",
+                    correct: "win",
+                    options: ["beat", "win"],
+                    explanation: "Usamos 'win' porque el objeto es 'the match' (el evento), no el rival."
+                }
+            },
+            {
+                id: 10,
+                verb1: {
+                    word: "refuse",
+                    ipa: "/rɪˈfjuːz/",
+                    spanish: "Negarse / Rechazar hacer algo",
+                    definitionEn: "To say firmly that you will not do something",
+                    example: "Tom always refuses to discuss his mistakes.",
+                    exampleEs: "Tom siempre se niega a discutir sus errores."
+                },
+                verb2: {
+                    word: "deny",
+                    ipa: "/dɪˈnaɪ/",
+                    spanish: "Negar (afirmar que algo no es verdad)",
+                    definitionEn: "To state that something is not true or that you didn't do it",
+                    example: "Tom denied breaking the window.",
+                    exampleEs: "Tom negó haber roto la ventana."
+                },
+                ruleEs: "'Refuse' es decir 'no lo haré'. 'Deny' es decir 'yo no lo hice / es falso'.",
+                ruleEn: "'Refuse' is choosing not to act. 'Deny' is declaring something untrue.",
+                quiz: {
+                    sentence: "The suspect ________ all allegations brought against him.",
+                    sentenceEs: "El sospechoso negó todas las acusaciones presentadas en su contra.",
+                    correct: "denied",
+                    options: ["refused", "denied"],
+                    explanation: "Usamos 'denied' porque está afirmando que las acusaciones no son verdaderas."
+                }
+            },
+            {
+                id: 11,
+                verb1: {
+                    word: "raise",
+                    ipa: "/reɪz/",
+                    spanish: "Levantar / Subir (necesita objeto directo)",
+                    definitionEn: "To make something go up or lift it (transitive)",
+                    example: "Please raise your hand if you have a question.",
+                    exampleEs: "Por favor levanta la mano si tienes alguna pregunta."
+                },
+                verb2: {
+                    word: "rise",
+                    ipa: "/raɪz/",
+                    spanish: "Subir / Elevarse (sin objeto directo)",
+                    definitionEn: "To go up or increase (intransitive)",
+                    example: "The cost of living is going to rise again.",
+                    exampleEs: "El costo de vida va a subir otra vez."
+                },
+                ruleEs: "'Raise' requiere mover algo (Raise something). 'Rise' ocurre por sí solo (Something rises).",
+                ruleEn: "'Raise' takes a direct object. 'Rise' does not take a direct object.",
+                quiz: {
+                    sentence: "The sun will ________ at 6:00 AM tomorrow morning.",
+                    sentenceEs: "El sol saldrá (se elevará) a las 6:00 AM mañana por la mañana.",
+                    correct: "rise",
+                    options: ["raise", "rise"],
+                    explanation: "Usamos 'rise' porque el sol se eleva por sí solo sin un objeto directo."
+                }
+            },
+            {
+                id: 12,
+                verb1: {
+                    word: "lay",
+                    ipa: "/leɪ/",
+                    spanish: "Poner / Colocar algo cuidadosamente",
+                    definitionEn: "To put something or someone down in a flat position",
+                    example: "I usually lay the baby on the bed to change his nappy.",
+                    exampleEs: "Usualmente coloco al bebé en la cama para cambiarle el pañal."
+                },
+                verb2: {
+                    word: "lie",
+                    ipa: "/laɪ/",
+                    spanish: "Tumbarse / Recostarse uno mismo",
+                    definitionEn: "To put your own body in a horizontal position",
+                    example: "Go and lie on the bed if you feel tired.",
+                    exampleEs: "Ve y túmbate en la cama si te sientes cansado."
+                },
+                ruleEs: "'Lay' exige colocar un objeto (lay something). 'Lie' es recostarte tú mismo.",
+                ruleEn: "'Lay' requires a direct object. 'Lie' means to recline yourself.",
+                quiz: {
+                    sentence: "I just want to ________ on the grass and enjoy the sunshine.",
+                    sentenceEs: "Solo quiero tumbarme en el césped y disfrutar del sol.",
+                    correct: "lie",
+                    options: ["lay", "lie"],
+                    explanation: "Usamos 'lie' porque significa recostar el propio cuerpo."
+                }
+            },
+            {
+                id: 13,
+                verb1: {
+                    word: "steal",
+                    ipa: "/stiːl/",
+                    spanish: "Robar (un objeto o dinero)",
+                    definitionEn: "To take an item or money that belongs to someone else",
+                    example: "Someone might steal your bike if you leave it unlocked.",
+                    exampleEs: "Alguien podría robar tu bicicleta si la dejas sin candado."
+                },
+                verb2: {
+                    word: "rob",
+                    ipa: "/rɒb/",
+                    spanish: "Robar A (una persona o lugar)",
+                    definitionEn: "To take from a person or place by threat or force",
+                    example: "The thieves planned to rob the central bank.",
+                    exampleEs: "Los ladrones planearon robar el banco central."
+                },
+                ruleEs: "Robas A un lugar o persona (Rob a bank). Robas UN objeto (Steal a bike).",
+                ruleEn: "You rob a person or place. You steal an object.",
+                quiz: {
+                    sentence: "Two masked men tried to ________ the post office yesterday.",
+                    sentenceEs: "Dos hombres enmascarados intentaron robar la oficina de correos ayer.",
+                    correct: "rob",
+                    options: ["steal", "rob"],
+                    explanation: "Usamos 'rob' porque el objeto directo es el establecimiento/lugar ('the post office')."
+                }
+            },
+            {
+                id: 14,
+                verb1: {
+                    word: "advise",
+                    ipa: "/ədˈvaɪz/",
+                    spanish: "Aconsejar (dar una recomendación)",
+                    definitionEn: "To give a recommendation or suggestion about what to do",
+                    example: "My teachers are going to advise me on which subjects to study.",
+                    exampleEs: "Mis profesores me van a aconsejar sobre qué materias estudiar."
+                },
+                verb2: {
+                    word: "warn",
+                    ipa: "/wɔːn/",
+                    spanish: "Advertir / Alertar sobre un peligro",
+                    definitionEn: "To tell someone that something unpleasant or dangerous may happen",
+                    example: "I must warn you that the roads are icy.",
+                    exampleEs: "Debo advertirte que las carreteras están congeladas."
+                },
+                ruleEs: "'Advise' da orientación útil. 'Warn' alerta sobre un riesgo o peligro.",
+                ruleEn: "'Advise' offers helpful guidance. 'Warn' cautions against potential trouble.",
+                quiz: {
+                    sentence: "The lifeguard ________ us not to swim too far out.",
+                    sentenceEs: "El salvavidas nos advirtió que no nadáramos demasiado lejos.",
+                    correct: "warned",
+                    options: ["advised", "warned"],
+                    explanation: "Usamos 'warned' porque advierte sobre un riesgo o peligro en el mar."
+                }
+            },
+            {
                 id: 15,
                 verb1: {
-                    word: "look (at)",
-                    ipa: "/lʊk/",
-                    spanish: "Mirar (dirigir la vista hacia algo fijamente)",
-                    example: "Look at that lovely painting on the wall.",
+                    word: "say",
+                    ipa: "/seɪ/",
+                    spanish: "Decir (palabras sin objeto directo de persona)",
+                    definitionEn: "To speak words (say something to someone)",
+                    example: "She said that she was going to be late.",
+                    exampleEs: "Ella dijo que iba a llegar tarde."
+                },
+                verb2: {
+                    word: "tell",
+                    ipa: "/tel/",
+                    spanish: "Decir / Contar (decir A alguien)",
+                    definitionEn: "To give information to a specific person (tell someone something)",
+                    example: "He told me a funny story yesterday.",
+                    exampleEs: "Él me contó una historia divertida ayer."
+                },
+                ruleEs: "'Say' NO lleva la persona pegada (say that...). 'Tell' exige la persona (tell me/him/them).",
+                ruleEn: "You say something, but you tell SOMEONE something.",
+                quiz: {
+                    sentence: "Did she ________ you what time the lecture starts?",
+                    sentenceEs: "¿Te dijo a qué hora empieza la conferencia?",
+                    correct: "tell",
+                    options: ["say", "tell"],
+                    explanation: "Usamos 'tell' porque va seguido inmediatamente de la persona ('you')."
+                }
+            },
+            {
+                id: 16,
+                verb1: {
+                    word: "bring",
+                    ipa: "/brɪŋ/",
+                    spanish: "Traer (hacia el hablante)",
+                    definitionEn: "To carry or move something towards the speaker",
+                    example: "Please bring me a cup of tea when you come.",
+                    exampleEs: "Por favor tráeme una taza de té cuando vengas."
+                },
+                verb2: {
+                    word: "take",
+                    ipa: "/teɪk/",
+                    spanish: "Llevar (alejándose del hablante)",
+                    definitionEn: "To carry or move something away from the speaker",
+                    example: "Don't forget to take an umbrella when you leave.",
+                    exampleEs: "No olvides llevar un paraguas cuando te vayas."
+                },
+                ruleEs: "'Bring' acerca algo al lugar del hablante. 'Take' lo aleja hacia otro sitio.",
+                ruleEn: "'Bring' moves towards the speaker. 'Take' moves away.",
+                quiz: {
+                    sentence: "Remember to ________ your passport with you when you go to the airport.",
+                    sentenceEs: "Recuerda llevar tu pasaporte contigo cuando vayas al aeropuerto.",
+                    correct: "take",
+                    options: ["bring", "take"],
+                    explanation: "Usamos 'take' porque te desplazas llevándolo hacia otro lugar (el aeropuerto)."
+                }
+            },
+            {
+                id: 17,
+                verb1: {
+                    word: "hear",
+                    ipa: "/hɪər/",
+                    spanish: "Oír (percibir sonido de forma involuntaria)",
+                    definitionEn: "To perceive sound with your ears passively",
+                    example: "Did you hear that strange noise outside?",
+                    exampleEs: "¿Oíste ese ruido extraño afuera?"
+                },
+                verb2: {
+                    word: "listen",
+                    ipa: "/ˈlɪs.ən/",
+                    spanish: "Escuchar (prestar atención activa)",
+                    definitionEn: "To pay active attention to a sound intentionally",
+                    example: "I love listening to British podcasts in the morning.",
+                    exampleEs: "Me encanta escuchar podcasts británicos por la mañana."
+                },
+                ruleEs: "'Hear' es involuntario. 'Listen (to)' requiere atención voluntaria.",
+                ruleEn: "'Hear' is passive perception. 'Listen' requires intentional attention.",
+                quiz: {
+                    sentence: "Please ________ carefully to what I am saying.",
+                    sentenceEs: "Por favor escucha atentamente lo que estoy diciendo.",
+                    correct: "listen",
+                    options: ["hear", "listen"],
+                    explanation: "Usamos 'listen' porque exige prestar atención consciente."
+                }
+            },
+            {
+                id: 18,
+                verb1: {
+                    word: "meet",
+                    ipa: "/miːt/",
+                    spanish: "Conocer por primera vez / Reunirse",
+                    definitionEn: "To see and speak to someone for the first time, or assemble",
+                    example: "I met my best friend at university ten years ago.",
+                    exampleEs: "Conocí a mi mejor amigo en la universidad hace diez años."
+                },
+                verb2: {
+                    word: "know",
+                    ipa: "/nəʊ/",
+                    spanish: "Conocer de tiempo / Saber",
+                    definitionEn: "To be familiar with someone over a period of time",
+                    example: "I have known Sarah since we were children.",
+                    exampleEs: "Conozco a Sarah desde que éramos niños."
+                },
+                ruleEs: "'Meet' es el primer contacto inicial. 'Know' refleja una relación continuada.",
+                ruleEn: "'Meet' is first contact or meeting. 'Know' is long-standing familiarity.",
+                quiz: {
+                    sentence: "How long have you ________ your manager?",
+                    sentenceEs: "¿Cuánto tiempo hace que conoces a tu gerente?",
+                    correct: "known",
+                    options: ["met", "known"],
+                    explanation: "Usamos 'known' (participio de know) para hablar de familiaridad acumulada en el tiempo."
+                }
+            },
+            {
+                id: 19,
+                verb1: {
+                    word: "miss",
+                    ipa: "/mɪs/",
+                    spanish: "Perder (transporte/oportunidad) / Extrañar",
+                    definitionEn: "To arrive too late for transport, or feel sadness for absence",
+                    example: "If we don't hurry, we will miss the train.",
+                    exampleEs: "Si no nos apuramos, perderemos el tren."
+                },
+                verb2: {
+                    word: "lose",
+                    ipa: "/luːz/",
+                    spanish: "Perder (un objeto/partido/dinero)",
+                    definitionEn: "To no longer have something or fail to win a match",
+                    example: "Be careful not to lose your room key.",
+                    exampleEs: "Ten cuidado de no perder la llave de tu habitación."
+                },
+                ruleEs: "Pierdes un transporte/evento = 'Miss'. Pierdes un objeto/juego = 'Lose'.",
+                ruleEn: "You miss a train, bus, or class. You lose an item, money, or match.",
+                quiz: {
+                    sentence: "I had to run fast so I wouldn't ________ the last flight.",
+                    sentenceEs: "Tuve que correr rápido para no perder el último vuelo.",
+                    correct: "miss",
+                    options: ["miss", "lose"],
+                    explanation: "Usamos 'miss' porque se refiere a perder un medio de transporte por llegar tarde."
+                }
+            },
+            {
+                id: 20,
+                verb1: {
+                    word: "wear",
+                    ipa: "/weər/",
+                    spanish: "Llevar puesto / Vestir (ropa/accesorios)",
+                    definitionEn: "To have clothes, shoes, or accessories on your body",
+                    example: "She was wearing a beautiful green coat.",
+                    exampleEs: "Llevaba puesto un hermoso abrigo verde."
+                },
+                verb2: {
+                    word: "carry",
+                    ipa: "/ˈkær.i/",
+                    spanish: "Cargar / Llevar consigo en la mano o bolso",
+                    definitionEn: "To hold something in your hands or bag while moving",
+                    example: "He was carrying a heavy suitcase to the taxi.",
+                    exampleEs: "Estaba cargando una maleta pesada hacia el taxi."
+                },
+                ruleEs: "'Wear' es sobre la ropa puesta en el cuerpo. 'Carry' es sostener un objeto al moverte.",
+                ruleEn: "'Wear' is on your body. 'Carry' is held in hands or bag.",
+                quiz: {
+                    sentence: "I love those stylish boots you are ________ today!",
+                    sentenceEs: "¡Me encantan esas botas elegantes que llevas puestas hoy!",
+                    correct: "wearing",
+                    options: ["wearing", "carrying"],
+                    explanation: "Usamos 'wearing' porque las botas van puestas en los pies (ropa/calzado)."
+                }
+            },
+            {
+                id: 21,
+                verb1: {
+                    word: "look at",
+                    ipa: "/lʊk æt/",
+                    spanish: "Mirar (dirigir la vista a algo estático)",
+                    definitionEn: "To direct your eyes towards a static object",
+                    example: "Look at that beautiful painting on the wall.",
                     exampleEs: "Mira esa hermosa pintura en la pared."
                 },
                 verb2: {
                     word: "watch",
                     ipa: "/wɒtʃ/",
-                    spanish: "Ver / Observar (algo en movimiento durante un tiempo)",
-                    example: "We spent the evening watching a documentary on BBC.",
-                    exampleEs: "Pasamos la tarde viendo un documental en la BBC."
+                    spanish: "Observar / Ver (algo en movimiento en el tiempo)",
+                    definitionEn: "To pay attention to something moving or changing over time",
+                    example: "We spent the evening watching a movie on TV.",
+                    exampleEs: "Pasamos la tarde viendo una película en la televisión."
                 },
-                ruleEs: "'Look at' es enfocar la vista en algo estático. 'Watch' es observar algo en movimiento o evolución (película, deporte).",
-                ruleEn: "'Look at' is directing your eyes. 'Watch' is paying attention to something moving over time.",
+                ruleEs: "'Look at' es enfocar la vista en algo quieto. 'Watch' es seguir una acción o película.",
+                ruleEn: "'Look at' is directing eyes at static things. 'Watch' is observing dynamic events.",
                 quiz: {
-                    sentence: "Did you ________ the tennis match at Wimbledon yesterday?",
-                    sentenceEs: "¿Viste el partido de tenis en Wimbledon ayer?",
+                    sentence: "Did you ________ the football match on television last night?",
+                    sentenceEs: "¿Viste el partido de fútbol en la televisión anoche?",
                     correct: "watch",
                     options: ["look at", "watch"],
-                    explanation: "Usamos 'watch' porque un partido de tenis es un evento con movimiento que se observa con el tiempo."
+                    explanation: "Usamos 'watch' porque un partido de fútbol es un evento dinámico con movimiento."
                 }
             }
         ];
 
-        // Speech Engine Config
         let currentSpeechRate = 0.9;
         let flashcardCurrentIndex = 0;
         let flashcardFlipped = false;
@@ -718,19 +912,19 @@
         let quizScore = 0;
         let quizAnswered = false;
 
-        // Function to speak British English Text
+        // British Speech Engine using Web Speech API
         function playSpeech(text, customRate = null) {
             if (!('speechSynthesis' in window)) {
                 alert("Speech synthesis is not supported in this browser. Try Chrome, Edge, or Safari.");
                 return;
             }
 
-            window.speechSynthesis.cancel(); // Cancel any active speech
+            window.speechSynthesis.cancel(); // Stop active speech
 
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.rate = customRate || currentSpeechRate;
 
-            // Search for en-GB voice specifically
+            // Search for British English (en-GB) voice
             const voices = window.speechSynthesis.getVoices();
             const ukVoice = voices.find(v => 
                 v.lang === 'en-GB' || 
@@ -753,11 +947,11 @@
             currentSpeechRate = parseFloat(val);
         }
 
-        function playAllSampleAudio() {
-            playSpeech("Welcome to confusing verb pairs. Let us practice British English pronunciation together.");
+        function playIntroAudio() {
+            playSpeech("Welcome to mastering confusing verb pairs in British English.");
         }
 
-        // Helper functions for playing audio safely without single-quote syntax errors in HTML attributes
+        // Safe helper playback functions by ID
         function playPairWord(pairId, verbNum) {
             const pair = VERB_PAIRS.find(p => p.id === pairId);
             if (!pair) return;
@@ -768,10 +962,9 @@
         function playPairExamples(pairId) {
             const pair = VERB_PAIRS.find(p => p.id === pairId);
             if (!pair) return;
-            playSpeech(`${pair.verb1.example}. ${pair.verb2.example}`);
+            playSpeech(`${pair.verb1.example} ... ${pair.verb2.example}`);
         }
 
-        // Render Study Library Cards
         function renderStudyCards(pairsToRender = VERB_PAIRS) {
             const container = document.getElementById('verbCardsContainer');
             container.innerHTML = '';
@@ -781,7 +974,7 @@
                     <div class="col-span-full py-12 text-center text-slate-400 bg-white rounded-2xl border border-dashed border-slate-300">
                         <i data-lucide="search-x" class="w-10 h-10 mx-auto mb-2 text-slate-300"></i>
                         <p class="font-medium text-slate-600">No verb pairs match your search query.</p>
-                        <p class="text-xs">Try searching for "borrow", "make", or "say".</p>
+                        <p class="text-xs">Try searching for "argue", "discuss", "borrow", or "win".</p>
                     </div>
                 `;
                 lucide.createIcons();
@@ -794,15 +987,15 @@
                 
                 card.innerHTML = `
                     <div class="space-y-4">
-                        <!-- Pair Header -->
+                        <!-- Pair Title Header -->
                         <div class="flex items-center justify-between border-b border-slate-100 pb-3">
                             <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full border border-brand-100">
                                 Pair #${pair.id}
                             </span>
-                            <span class="text-xs text-slate-400 font-medium">British Accent 🇬🇧</span>
+                            <span class="text-xs text-slate-400 font-medium">British English 🇬🇧</span>
                         </div>
 
-                        <!-- Grid of Verbs -->
+                        <!-- Verbs Side-by-Side Grid -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <!-- Verb 1 -->
                             <div class="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/70 space-y-2 hover:bg-slate-100/60 transition-colors">
@@ -816,6 +1009,7 @@
                                 </div>
                                 <div class="text-xs font-mono text-indigo-600 font-medium">IPA: ${pair.verb1.ipa}</div>
                                 <p class="text-xs font-semibold text-slate-700">${pair.verb1.spanish}</p>
+                                <p class="text-[11px] text-slate-500 leading-snug">${pair.verb1.definitionEn}</p>
                                 <div class="pt-1 text-xs text-slate-500 italic border-t border-slate-200/50">
                                     "${pair.verb1.example}"
                                     <div class="text-[11px] text-slate-400 not-italic mt-0.5">${pair.verb1.exampleEs}</div>
@@ -834,6 +1028,7 @@
                                 </div>
                                 <div class="text-xs font-mono text-indigo-600 font-medium">IPA: ${pair.verb2.ipa}</div>
                                 <p class="text-xs font-semibold text-slate-700">${pair.verb2.spanish}</p>
+                                <p class="text-[11px] text-slate-500 leading-snug">${pair.verb2.definitionEn}</p>
                                 <div class="pt-1 text-xs text-slate-500 italic border-t border-slate-200/50">
                                     "${pair.verb2.example}"
                                     <div class="text-[11px] text-slate-400 not-italic mt-0.5">${pair.verb2.exampleEs}</div>
@@ -841,11 +1036,11 @@
                             </div>
                         </div>
 
-                        <!-- Difference / Usage Rule -->
+                        <!-- Rule / Difference Box -->
                         <div class="p-3 bg-indigo-50/70 border border-indigo-100 rounded-xl space-y-1">
                             <div class="flex items-center gap-1.5 text-xs font-bold text-indigo-900">
                                 <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
-                                <span>Diferencia clave (Key Difference):</span>
+                                <span>Key Difference Rule:</span>
                             </div>
                             <p class="text-xs text-indigo-950 font-medium leading-relaxed">${pair.ruleEs}</p>
                         </div>
@@ -855,7 +1050,7 @@
                     <div class="flex justify-end pt-1">
                         <button onclick="playPairExamples(${pair.id})" class="text-xs text-slate-600 hover:text-brand-600 font-medium flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg shadow-2xs hover:border-brand-300 transition-all">
                             <i data-lucide="play-circle" class="w-4 h-4 text-brand-500"></i>
-                            <span>Listen Both Example Sentences</span>
+                            <span>Listen Both Examples</span>
                         </button>
                     </div>
                 `;
@@ -867,7 +1062,7 @@
             lucide.createIcons();
         }
 
-        // Search Filter Logic
+        // Search Filter
         function filterStudyCards() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             if (!query) {
@@ -886,7 +1081,6 @@
             renderStudyCards(filtered);
         }
 
-        // Tab Switch Logic
         function switchTab(tab) {
             document.getElementById('section-study').classList.add('hidden');
             document.getElementById('section-quiz').classList.add('hidden');
@@ -908,7 +1102,6 @@
             }
         }
 
-        // QUIZ LOGIC
         function renderQuizQuestion() {
             const current = VERB_PAIRS[quizCurrentIndex];
             quizAnswered = false;
@@ -968,12 +1161,12 @@
                 quizScore++;
                 feedback.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50/80 transition-all space-y-2";
                 feedbackIcon.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>`;
-                feedbackTitle.innerText = "¡Correcto! Well done!";
+                feedbackTitle.innerText = "Correct! Well done!";
                 feedbackTitle.className = "font-bold text-sm text-emerald-900";
             } else {
                 feedback.className = "p-4 rounded-xl border border-rose-200 bg-rose-50/80 transition-all space-y-2";
                 feedbackIcon.innerHTML = `<i data-lucide="x-circle" class="w-5 h-5 text-rose-600"></i>`;
-                feedbackTitle.innerText = `Incorrecto. La opción correcta es "${current.quiz.correct}".`;
+                feedbackTitle.innerText = `Incorrect. The correct answer is "${current.quiz.correct}".`;
                 feedbackTitle.className = "font-bold text-sm text-rose-900";
             }
 
@@ -985,7 +1178,7 @@
             document.getElementById('quizScore').innerText = `${quizScore} / ${VERB_PAIRS.length}`;
             document.getElementById('nextQuestionBtn').classList.remove('hidden');
 
-            // Play audio automatically for correct response
+            // Play correct sentence audio automatically
             playSpeech(fullSentence);
             lucide.createIcons();
         }
@@ -1010,12 +1203,12 @@
                     </div>
                     <div class="space-y-1">
                         <h3 class="text-2xl font-bold font-heading text-slate-900">Quiz Completed!</h3>
-                        <p class="text-sm text-slate-500">Has completado todos los pares de verbos confusos.</p>
+                        <p class="text-sm text-slate-500">You have completed all 21 confusing verb pair practice questions.</p>
                     </div>
 
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-sm mx-auto space-y-2">
                         <div class="text-3xl font-extrabold text-brand-600">${percentage}%</div>
-                        <div class="text-xs text-slate-600 font-medium">Your Final Score: ${quizScore} out of ${VERB_PAIRS.length}</div>
+                        <div class="text-xs text-slate-600 font-medium">Your Score: ${quizScore} out of ${VERB_PAIRS.length}</div>
                     </div>
 
                     <button onclick="resetQuiz()" class="px-6 py-3 bg-brand-600 text-white font-bold text-sm rounded-xl shadow hover:bg-brand-700 transition-all inline-flex items-center gap-2">
@@ -1031,11 +1224,10 @@
             quizScore = 0;
             const quizCard = document.getElementById('quizCard');
             
-            // Re-inject layout if it was replaced by completion screen
             quizCard.innerHTML = `
                 <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                     <span id="questionCounter" class="text-xs font-bold tracking-wider uppercase text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
-                        Question 1 of 15
+                        Question 1 of 21
                     </span>
                     <span id="questionCategory" class="text-xs font-medium text-slate-400">
                         Target Pair
@@ -1055,7 +1247,7 @@
                             <span id="feedbackIcon"></span>
                             <h4 id="feedbackTitle" class="font-bold text-sm">Correct!</h4>
                         </div>
-                        <button id="listenSentenceBtn" onclick="" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
+                        <button id="listenSentenceBtn" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
                             <i data-lucide="volume-2" class="w-4 h-4"></i> Listen (UK)
                         </button>
                     </div>
@@ -1072,7 +1264,6 @@
             renderQuizQuestion();
         }
 
-        // FLASHCARD LOGIC
         function flipFlashcard() {
             const inner = document.getElementById('flashcardInner');
             flashcardFlipped = !flashcardFlipped;
@@ -1086,7 +1277,6 @@
         function updateFlashcardUI() {
             const current = VERB_PAIRS[flashcardCurrentIndex];
             
-            // Unflip card if flipped
             if (flashcardFlipped) {
                 flipFlashcard();
             }
@@ -1118,15 +1308,11 @@
         }
 
         function playFlashcardBoth() {
-            const current = VERB_PAIRS[flashcardCurrentIndex];
-            playSpeech(`${current.verb1.word}. ${current.verb1.example}. ${current.verb2.word}. ${current.verb2.example}.`);
+            playPairExamples(VERB_PAIRS[flashcardCurrentIndex].id);
         }
 
-        // Initialize App on DOM Load
         window.onload = function() {
-            // Load Lucide Icons
             lucide.createIcons();
-            // Render Study Cards
             renderStudyCards();
         }
     </script>
