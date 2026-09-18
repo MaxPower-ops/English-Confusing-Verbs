@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Confusing English Verb Pairs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Lexend', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-slate-800 antialiased bg-slate-50 selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Banner & Navigation -->
+    <header class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-indigo-400 flex items-center justify-center shadow-md">
+                        <i data-lucide="book-open-check" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-heading font-bold text-lg sm:text-xl tracking-tight leading-none text-white">
+                            Confusing Verb Pairs <span class="text-indigo-400 text-xs px-2 py-0.5 rounded-full bg-indigo-950/80 border border-indigo-700/50">UK 🇬🇧 Audio</span>
+                        </h1>
+                        <p class="text-xs text-slate-400">Aprende y practica los pares de verbos confusos en inglés</p>
+                    </div>
+                </div>
+
+                <!-- Speech Speed & Voice Indicator -->
+                <div class="hidden sm:flex items-center space-x-3 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700/60 text-xs">
+                    <div class="flex items-center text-slate-300">
+                        <i data-lucide="volume-2" class="w-4 h-4 mr-1.5 text-brand-500"></i>
+                        <span>Accent: <strong class="text-white">British (en-GB)</strong></span>
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <label for="speedSelect" class="text-slate-400">Speed:</label>
+                    <select id="speedSelect" onchange="updateAudioSpeed(this.value)" class="bg-slate-900 text-slate-200 text-xs rounded px-2 py-0.5 border border-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-500">
+                        <option value="0.75">0.75x (Slow)</option>
+                        <option value="0.9" selected>0.9x (Normal)</option>
+                        <option value="1.1">1.1x (Fast)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Navigation Tabs -->
+        <div class="bg-slate-950/60 border-t border-slate-800/80 px-4">
+            <div class="max-w-7xl mx-auto flex space-x-2 sm:space-x-4 overflow-x-auto py-2">
+                <button onclick="switchTab('study')" id="tab-study" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-brand-600 text-white shadow-sm">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                    <span>1. Study Library</span>
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                    <span>2. Interactive Quiz</span>
+                </button>
+                <button onclick="switchTab('flashcards')" id="tab-flashcards" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-800/60">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>3. Flashcards</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- SECTION 1: STUDY LIBRARY -->
+        <section id="section-study" class="space-y-6">
+            <!-- Search and Filter Bar -->
+            <div class="glass-card p-4 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="relative w-full md:w-96">
+                    <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="filterStudyCards()" placeholder="Search verbs (e.g., raise, borrow, make)..." class="w-full pl-9 pr-4 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                </div>
+
+                <div class="flex items-center justify-between w-full md:w-auto gap-3 text-xs text-slate-500">
+                    <span id="pairsCount" class="font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg border border-slate-200">
+                        Showing 15 Verb Pairs
+                    </span>
+                    <button onclick="playAllSampleAudio()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 hover:bg-indigo-100 font-medium transition-colors border border-indigo-200">
+                        <i data-lucide="volume-2" class="w-4 h-4"></i>
+                        <span>Test Audio Engine</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Verb Cards Container -->
+            <div id="verbCardsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Dynamically populated via JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE QUIZ -->
+        <section id="section-quiz" class="hidden max-w-3xl mx-auto space-y-6">
+            <!-- Quiz Progress Header -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-heading font-bold text-slate-900">Verb Pair Practice Quiz</h2>
+                    <p class="text-xs text-slate-500">Choose the correct verb to complete the British English sentence.</p>
+                </div>
+                <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
+                    <div class="text-center px-4 py-2 bg-indigo-50 rounded-xl border border-indigo-100">
+                        <span class="block text-xs text-indigo-600 font-semibold uppercase">Score</span>
+                        <span id="quizScore" class="text-xl font-bold text-indigo-900">0 / 0</span>
+                    </div>
+                    <button onclick="resetQuiz()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors flex items-center gap-1.5">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Restart
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Card -->
+            <div id="quizCard" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-md space-y-6">
+                <!-- Question Header & Counter -->
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <span id="questionCounter" class="text-xs font-bold tracking-wider uppercase text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
+                        Question 1 of 15
+                    </span>
+                    <span id="questionCategory" class="text-xs font-medium text-slate-400">
+                        Target Pair: borrow vs lend
+                    </span>
+                </div>
+
+                <!-- Sentence with blank -->
+                <div class="py-4">
+                    <p id="quizSentence" class="text-lg sm:text-xl font-medium text-slate-800 leading-relaxed text-center">
+                        Can I ________ your umbrella for a few hours? It's raining outside.
+                    </p>
+                    <p id="quizSpanishHint" class="text-sm text-slate-500 text-center italic mt-2">
+                        ¿Puedo tomar prestado tu paraguas por unas horas?
+                    </p>
+                </div>
+
+                <!-- Multiple Choice Options -->
+                <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    <!-- Buttons inserted dynamically -->
+                </div>
+
+                <!-- Feedback Box -->
+                <div id="quizFeedback" class="hidden p-4 rounded-xl border transition-all space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span id="feedbackIcon"></span>
+                            <h4 id="feedbackTitle" class="font-bold text-sm">Correct!</h4>
+                        </div>
+                        <button id="listenSentenceBtn" onclick="" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Listen (UK)
+                        </button>
+                    </div>
+                    <p id="feedbackExplanation" class="text-xs sm:text-sm text-slate-600 leading-normal">
+                        Explicación aquí...
+                    </p>
+                </div>
+
+                <!-- Next Button -->
+                <div class="pt-2 flex justify-end">
+                    <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-2">
+                        <span>Next Question</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FLASHCARDS -->
+        <section id="section-flashcards" class="hidden max-w-xl mx-auto space-y-6">
+            <div class="text-center space-y-1">
+                <h2 class="text-xl font-heading font-bold text-slate-900">Interactive Flashcards</h2>
+                <p class="text-xs text-slate-500">Haz clic en la tarjeta para girarla y ver la explicación completa con audio.</p>
+            </div>
+
+            <!-- Flashcard Container -->
+            <div class="perspective-1000 w-full h-80 cursor-pointer group" onclick="flipFlashcard()">
+                <div id="flashcardInner" class="relative w-full h-full duration-500 transform-style-3d shadow-lg rounded-2xl bg-white border border-slate-200">
+                    
+                    <!-- FRONT OF CARD -->
+                    <div class="absolute inset-0 w-full h-full rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden bg-gradient-to-br from-white via-slate-50 to-indigo-50/30">
+                        <div class="w-full flex justify-between items-center text-xs text-slate-400">
+                            <span class="font-medium uppercase tracking-wider">Flashcard Pair</span>
+                            <span id="flashcardIndex">1 / 15</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="inline-flex items-center justify-center p-3 bg-brand-50 text-brand-600 rounded-full border border-brand-100 mb-2">
+                                <i data-lucide="help-circle" class="w-8 h-8"></i>
+                            </div>
+                            <h3 id="flashcardFrontTitle" class="text-2xl font-bold font-heading text-slate-900">
+                                borrow <span class="text-slate-400 font-light">vs</span> lend
+                            </h3>
+                            <p class="text-xs text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 inline-block">
+                                ¿Cuál es la diferencia? (Haz clic para revelar)
+                            </p>
+                        </div>
+
+                        <div class="text-xs text-slate-400 flex items-center gap-1">
+                            <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i> Tap to flip
+                        </div>
+                    </div>
+
+                    <!-- BACK OF CARD -->
+                    <div class="absolute inset-0 w-full h-full rounded-2xl p-6 flex flex-col justify-between items-center text-center backface-hidden rotate-y-180 bg-white border-2 border-brand-500">
+                        <div class="w-full flex justify-between items-center text-xs text-slate-400">
+                            <span class="font-semibold text-brand-600 uppercase tracking-wider">Explanation & Pronunciation</span>
+                            <span id="flashcardIndexBack">1 / 15</span>
+                        </div>
+
+                        <div class="space-y-3 overflow-y-auto max-h-48 px-2 w-full text-left">
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb1">borrow</span>
+                                    <span class="text-xs font-mono text-slate-500" id="fcIpa1">/ˈbɒr.əʊ/</span>
+                                    <button onclick="event.stopPropagation(); playSpeech(document.getElementById('fcVerb1').innerText)" class="p-1 text-brand-600 hover:bg-brand-100 rounded">
+                                        <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-slate-600" id="fcSpan1">Tomar prestado (pedir)</p>
+                            </div>
+
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-indigo-900 text-sm" id="fcVerb2">lend</span>
+                                    <span class="text-xs font-mono text-slate-500" id="fcIpa2">/lend/</span>
+                                    <button onclick="event.stopPropagation(); playSpeech(document.getElementById('fcVerb2').innerText)" class="p-1 text-brand-600 hover:bg-brand-100 rounded">
+                                        <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-slate-600" id="fcSpan2">Prestar (dar a préstamo)</p>
+                            </div>
+
+                            <div class="p-2 bg-indigo-50/80 rounded-lg text-xs text-indigo-950 font-medium">
+                                💡 <span id="fcRule">Regla rápida: You borrow FROM someone, you lend TO someone.</span>
+                            </div>
+                        </div>
+
+                        <div class="text-xs text-slate-400 flex items-center gap-1">
+                            <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i> Tap to flip back
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Flashcard Navigation Controls -->
+            <div class="flex items-center justify-between pt-4">
+                <button onclick="prevFlashcard()" class="px-4 py-2 bg-white border border-slate-200 text-slate-700 font-medium text-xs rounded-xl shadow-sm hover:bg-slate-50 flex items-center gap-2">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> Previous
+                </button>
+                <button onclick="playFlashcardBoth()" class="px-4 py-2 bg-indigo-50 text-indigo-700 font-semibold text-xs rounded-xl hover:bg-indigo-100 border border-indigo-200 flex items-center gap-1.5">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i> Listen Both (UK)
+                </button>
+                <button onclick="nextFlashcard()" class="px-4 py-2 bg-brand-600 text-white font-medium text-xs rounded-xl shadow-sm hover:bg-brand-700 flex items-center gap-2">
+                    Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Data Structure for Confusing Verbs with Spanish Translations, British IPA, Rules, and Quizzes
+        const VERB_PAIRS = [
+            {
+                id: 1,
+                verb1: {
+                    word: "borrow",
+                    ipa: "/ˈbɒr.əʊ/",
+                    spanish: "Tomar prestado / Pedir prestado",
+                    example: "Can I borrow your pen for a second?",
+                    exampleEs: "¿Puedo tomar prestada tu pluma por un segundo?"
+                },
+                verb2: {
+                    word: "lend",
+                    ipa: "/lend/",
+                    spanish: "Prestar (dar prestado)",
+                    example: "Could you lend me £10 until tomorrow?",
+                    exampleEs: "¿Podrías prestarme £10 hasta mañana?"
+                },
+                ruleEs: "Toma prestado ('borrow') ALGUIEN DE ti. Prestas ('lend') TÚ A alguien.",
+                ruleEn: "You borrow FROM someone. You lend TO someone.",
+                quiz: {
+                    sentence: "I left my money at home. Could you ________ me some cash for lunch?",
+                    sentenceEs: "Dejé mi dinero en casa. ¿Podrías prestarme algo de efectivo para el almuerzo?",
+                    correct: "lend",
+                    options: ["borrow", "lend"],
+                    explanation: "Usamos 'lend' porque la persona te va a dar el dinero a ti (lend to me)."
+                }
+            },
+            {
+                id: 2,
+                verb1: {
+                    word: "raise",
+                    ipa: "/reɪz/",
+                    spanish: "Levantar / Elevar (requiere objeto)",
+                    example: "Please raise your hand if you have a question.",
+                    exampleEs: "Por favor levanta la mano si tienes alguna pregunta."
+                },
+                verb2: {
+                    word: "rise",
+                    ipa: "/raɪz/",
+                    spanish: "Subir / Elevarse (no requiere objeto)",
+                    example: "The sun rises in the east every morning.",
+                    exampleEs: "El sol sale (se eleva) en el este cada mañana."
+                },
+                ruleEs: "'Raise' necesita un objeto directo (Raise something). 'Rise' ocurre por sí mismo (Something rises).",
+                ruleEn: "'Raise' takes a direct object. 'Rise' does not take an object.",
+                quiz: {
+                    sentence: "Prices of food continue to ________ rapidly due to inflation.",
+                    sentenceEs: "Los precios de la comida continúan subiendo rápidamente debido a la inflación.",
+                    correct: "rise",
+                    options: ["raise", "rise"],
+                    explanation: "Usamos 'rise' porque los precios suben por sí solos sin un objeto directo detrás del verbo."
+                }
+            },
+            {
+                id: 3,
+                verb1: {
+                    word: "lay",
+                    ipa: "/leɪ/",
+                    spanish: "Poner / Colocar (algo cuidadosamente / la mesa)",
+                    example: "Please lay the books flat on the table.",
+                    exampleEs: "Por favor coloca los libros planos sobre la mesa."
+                },
+                verb2: {
+                    word: "lie",
+                    ipa: "/laɪ/",
+                    spanish: "Estar tumbado / Acostarse (también: Mentir)",
+                    example: "I just want to lie on the beach all day.",
+                    exampleEs: "Solo quiero tumbarme en la playa todo el día."
+                },
+                ruleEs: "'Lay' requiere colocar algo (Lay something). 'Lie' es recostarse uno mismo.",
+                ruleEn: "'Lay' requires a direct object (lay something down). 'Lie' means to recline.",
+                quiz: {
+                    sentence: "If you feel dizzy, go and ________ down on the bed.",
+                    sentenceEs: "Si te sientes mareado, ve y túmbate en la cama.",
+                    correct: "lie",
+                    options: ["lay", "lie"],
+                    explanation: "Usamos 'lie' porque significa recostarse uno mismo."
+                }
+            },
+            {
+                id: 4,
+                verb1: {
+                    word: "remember",
+                    ipa: "/rɪˈmem.bər/",
+                    spanish: "Acordarse de / Recordar (tener el recuerdo)",
+                    example: "I remember meeting him in London two years ago.",
+                    exampleEs: "Recuerdo haberlo conocido en Londres hace dos años."
+                },
+                verb2: {
+                    word: "remind",
+                    ipa: "/rɪˈmaɪnd/",
+                    spanish: "Recordar a alguien (hacer que otro recuerde)",
+                    example: "Please remind me to call my mother later.",
+                    exampleEs: "Por favor recuérdame llamar a mi madre más tarde."
+                },
+                ruleEs: "'Remember' viene de tu propia mente. 'Remind' es cuando alguien o algo ayuda a tu memoria.",
+                ruleEn: "'Remember' is internal memory. 'Remind' is making someone else remember.",
+                quiz: {
+                    sentence: "That song always ________ me of my summer holidays in Scotland.",
+                    sentenceEs: "Esa canción siempre me recuerda mis vacaciones de verano en Escocia.",
+                    correct: "reminds",
+                    options: ["remembers", "reminds"],
+                    explanation: "Usamos 'remind' porque la canción hace que te acuerdes de algo (remind someone of something)."
+                }
+            },
+            {
+                id: 5,
+                verb1: {
+                    word: "say",
+                    ipa: "/seɪ/",
+                    spanish: "Decir (decir palabras sin objeto directo de persona)",
+                    example: "She said that she was going to be late.",
+                    exampleEs: "Ella dijo que iba a llegar tarde."
+                },
+                verb2: {
+                    word: "tell",
+                    ipa: "/tel/",
+                    spanish: "Decir / Contar (decirle A alguien)",
+                    example: "He told me a funny joke yesterday.",
+                    exampleEs: "Él me contó un chiste divertido ayer."
+                },
+                ruleEs: "'Say' NO requiere persona directamente (say something). 'Tell' exige la persona a quien se le dice (tell SOMEONE something).",
+                ruleEn: "You say something, but you tell SOMEONE something.",
+                quiz: {
+                    sentence: "Did she ________ you what time the train arrives in London?",
+                    sentenceEs: "¿Te dijo ella a qué hora llega el tren a Londres?",
+                    correct: "tell",
+                    options: ["say", "tell"],
+                    explanation: "Usamos 'tell' porque incluye el objeto de persona ('you'). Decimos 'tell you', no 'say you'."
+                }
+            },
+            {
+                id: 6,
+                verb1: {
+                    word: "rob",
+                    ipa: "/rɒb/",
+                    spanish: "Robar a (una persona o lugar)",
+                    example: "Thieves robbed the central bank last night.",
+                    exampleEs: "Los ladrones robaron el banco central anoche."
+                },
+                verb2: {
+                    word: "steal",
+                    ipa: "/stiːl/",
+                    spanish: "Robar (un objeto o dinero)",
+                    example: "Someone stole my bicycle from outside the café.",
+                    exampleEs: "Alguien robó mi bicicleta afuera del café."
+                },
+                ruleEs: "Robas A una persona o lugar (Rob a bank/person). Robas UN objeto (Steal money/a car).",
+                ruleEn: "You rob a person or place. You steal an object or item.",
+                quiz: {
+                    sentence: "The mugger threatened him and ________ his expensive watch.",
+                    sentenceEs: "El asaltante lo amenazó y le robó su reloj costoso.",
+                    correct: "stole",
+                    options: ["robbed", "stole"],
+                    explanation: "Usamos 'stole' (pasado de steal) porque el objeto robado es 'his expensive watch'."
+                }
+            },
+            {
+                id: 7,
+                verb1: {
+                    word: "win",
+                    ipa: "/wɪn/",
+                    spanish: "Ganar (un juego, premio, competencia, partido)",
+                    example: "England won the football match 2-1.",
+                    exampleEs: "Inglaterra ganó el partido de fútbol 2-1."
+                },
+                verb2: {
+                    word: "earn",
+                    ipa: "/ɜːn/",
+                    spanish: "Ganar (dinero con trabajo / salario)",
+                    example: "She earns a good salary working in finance.",
+                    exampleEs: "Ella gana un buen salario trabajando en finanzas."
+                },
+                ruleEs: "'Win' es para premios o competiciones. 'Earn' es para dinero ganado con esfuerzo o trabajo.",
+                ruleEn: "You win a prize, game, or race. You earn money or a salary through work.",
+                quiz: {
+                    sentence: "He worked overtime this week to ________ extra money for his trip.",
+                    sentenceEs: "Trabajó horas extra esta semana para ganar dinero adicional para su viaje.",
+                    correct: "earn",
+                    options: ["win", "earn"],
+                    explanation: "Usamos 'earn' porque se trata de ganar dinero a través del trabajo."
+                }
+            },
+            {
+                id: 8,
+                verb1: {
+                    word: "bring",
+                    ipa: "/brɪŋ/",
+                    spanish: "Traer (hacia el hablante)",
+                    example: "Please bring me a cup of tea, dear.",
+                    exampleEs: "Por favor tráeme una taza de té, querido."
+                },
+                verb2: {
+                    word: "take",
+                    ipa: "/teɪk/",
+                    spanish: "Llevar (desde el hablante hacia otro sitio)",
+                    example: "Don't forget to take an umbrella when you go out.",
+                    exampleEs: "No olvides llevar un paraguas cuando salgas."
+                },
+                ruleEs: "'Bring' es mover hacia el lugar donde estás. 'Take' es mover lejos de donde estás.",
+                ruleEn: "'Bring' moves towards the speaker. 'Take' moves away from the speaker.",
+                quiz: {
+                    sentence: "When you come to my house tonight, please ________ some wine.",
+                    sentenceEs: "Cuando vengas a mi casa esta noche, por favor trae algo de vino.",
+                    correct: "bring",
+                    options: ["bring", "take"],
+                    explanation: "Usamos 'bring' porque el movimiento es hacia donde estará el hablante (mi casa)."
+                }
+            },
+            {
+                id: 9,
+                verb1: {
+                    word: "hear",
+                    ipa: "/hɪər/",
+                    spanish: "Oír (percibir sonidos de forma involuntaria)",
+                    example: "Did you hear that strange noise outside?",
+                    exampleEs: "¿Oíste ese ruido extraño afuera?"
+                },
+                verb2: {
+                    word: "listen",
+                    ipa: "/ˈlɪs.ən/",
+                    spanish: "Escuchar (prestar atención activamente)",
+                    example: "I love listening to British podcasts while walking.",
+                    exampleEs: "Me encanta escuchar podcasts británicos mientras camino."
+                },
+                ruleEs: "'Hear' es pasivo (receptivo con los oídos). 'Listen' es activo (requiere atención y la preposición 'to').",
+                ruleEn: "'Hear' is passive perception. 'Listen (to)' is paying active attention.",
+                quiz: {
+                    sentence: "Please ________ carefully to the instructions before starting.",
+                    sentenceEs: "Por favor escucha atentamente las instrucciones antes de empezar.",
+                    correct: "listen",
+                    options: ["hear", "listen"],
+                    explanation: "Usamos 'listen' porque requiere atención activa hacia las instrucciones."
+                }
+            },
+            {
+                id: 10,
+                verb1: {
+                    word: "expect",
+                    ipa: "/ɪkˈspekt/",
+                    spanish: "Esperar (suponer que algo ocurrirá)",
+                    example: "We expect the train to arrive on time at 4 PM.",
+                    exampleEs: "Esperamos que el tren llegue a tiempo a las 4 PM."
+                },
+                verb2: {
+                    word: "wait",
+                    ipa: "/weɪt/",
+                    spanish: "Esperar (dejar pasar el tiempo)",
+                    example: "I had to wait for 30 minutes at the bus stop.",
+                    exampleEs: "Tuve que esperar 30 minutos en la parada de autobús."
+                },
+                ruleEs: "'Expect' es expectativa mental. 'Wait' es el paso físico del tiempo.",
+                ruleEn: "'Expect' means anticipating mentally. 'Wait' means staying somewhere until time passes.",
+                quiz: {
+                    sentence: "I am at the restaurant; I will ________ for you inside.",
+                    sentenceEs: "Estoy en el restaurante; te esperaré adentro.",
+                    correct: "wait",
+                    options: ["expect", "wait"],
+                    explanation: "Usamos 'wait' porque significa dejar pasar el tiempo físicamente en un lugar."
+                }
+            },
+            {
+                id: 11,
+                verb1: {
+                    word: "advise",
+                    ipa: "/ədˈvaɪz/",
+                    spanish: "Aconsejar (dar un consejo - verbo con S)",
+                    example: "The doctor advised me to rest for three days.",
+                    exampleEs: "El médico me aconsejó descansar durante tres días."
+                },
+                verb2: {
+                    word: "warn",
+                    ipa: "/wɔːn/",
+                    spanish: "Advertir / Prevenir sobre un peligro",
+                    example: "They warned us about the icy roads.",
+                    exampleEs: "Nos advirtieron sobre las carreteras heladas."
+                },
+                ruleEs: "'Advise' es sugerir lo mejor. 'Warn' es alertar de algo malo o peligroso.",
+                ruleEn: "'Advise' is giving recommendations. 'Warn' is alerting about potential danger.",
+                quiz: {
+                    sentence: "The lifeguard ________ the swimmers about the strong currents in the sea.",
+                    sentenceEs: "El salvavidas advirtió a los nadadores sobre las fuertes corrientes en el mar.",
+                    correct: "warned",
+                    options: ["advised", "warned"],
+                    explanation: "Usamos 'warned' porque advierte sobre un peligro potencial (fuertes corrientes)."
+                }
+            },
+            {
+                id: 12,
+                verb1: {
+                    word: "refuse",
+                    ipa: "/rɪˈfjuːz/",
+                    spanish: "Rechazar / Negarse a hacer algo",
+                    example: "He refused to pay for the damaged food.",
+                    exampleEs: "Él se negó a pagar por la comida dañada."
+                },
+                verb2: {
+                    word: "deny",
+                    ipa: "/dɪˈnaɪ/",
+                    spanish: "Denegar / Negar una acusación o verdad",
+                    example: "The suspect denied breaking the window.",
+                    exampleEs: "El sospechoso negó haber roto la ventana."
+                },
+                ruleEs: "'Refuse' es decir 'no quiero hacerlo'. 'Deny' es decir 'yo no fui / eso no es verdad'.",
+                ruleEn: "'Refuse' is choosing not to do something. 'Deny' is stating that something isn't true.",
+                quiz: {
+                    sentence: "The politician ________ taking any bribes during his campaign.",
+                    sentenceEs: "El político negó haber aceptado sobornos durante su campaña.",
+                    correct: "denied",
+                    options: ["refused", "denied"],
+                    explanation: "Usamos 'denied' porque está negando una afirmación o acusación de que ocurrió algo."
+                }
+            },
+            {
+                id: 13,
+                verb1: {
+                    word: "hope",
+                    ipa: "/həʊp/",
+                    spanish: "Esperar (desear algo positivo y posible)",
+                    example: "I hope it doesn't rain during our picnic.",
+                    exampleEs: "Espero que no llueva durante nuestro picnic."
+                },
+                verb2: {
+                    word: "wish",
+                    ipa: "/wɪʃ/",
+                    spanish: "Desear (algo imposible o difícil de cambiar)",
+                    example: "I wish I could fly to Tokyo right now.",
+                    exampleEs: "Desearía poder volar a Tokio en este momento."
+                },
+                ruleEs: "'Hope' es un deseo realista en el presente/futuro. 'Wish' expresa deseos hipotéticos o arrepentimientos.",
+                ruleEn: "'Hope' is for realistic expectations. 'Wish' is for hypothetical or impossible desires.",
+                quiz: {
+                    sentence: "I ________ you good luck in your final British English exam tomorrow!",
+                    sentenceEs: "¡Te deseo buena suerte en tu examen final de inglés británico mañana!",
+                    correct: "wish",
+                    options: ["hope", "wish"],
+                    explanation: "Usamos 'wish' para expresiones fijas de buenos deseos directos ('wish you good luck')."
+                }
+            },
+            {
+                id: 14,
+                verb1: {
+                    word: "mind",
+                    ipa: "/maɪnd/",
+                    spanish: "Importar / Molestar (tener inconveniente)",
+                    example: "Do you mind if I open the window?",
+                    exampleEs: "¿Te importa si abro la ventana?"
+                },
+                verb2: {
+                    word: "matter",
+                    ipa: "/ˈmæt.ər/",
+                    spanish: "Importar (ser importante / relevante)",
+                    example: "It doesn't matter if you are a few minutes late.",
+                    exampleEs: "No importa si llegas unos minutos tarde."
+                },
+                ruleEs: "'Mind' se usa con personas (I don't mind = no me molesta). 'Matter' se usa con situaciones (It matters = es importante).",
+                ruleEn: "'Mind' expresses personal annoyance or objection. 'Matter' expresses importance or impact.",
+                quiz: {
+                    sentence: "Don't worry about making mistakes; it really doesn't ________.",
+                    sentenceEs: "No te preocupes por cometer errores; realmente no importa.",
+                    correct: "matter",
+                    options: ["mind", "matter"],
+                    explanation: "Usamos 'matter' porque se refiere a la importancia de la situación ('it doesn't matter')."
+                }
+            },
+            {
+                id: 15,
+                verb1: {
+                    word: "look (at)",
+                    ipa: "/lʊk/",
+                    spanish: "Mirar (dirigir la vista hacia algo fijamente)",
+                    example: "Look at that lovely painting on the wall.",
+                    exampleEs: "Mira esa hermosa pintura en la pared."
+                },
+                verb2: {
+                    word: "watch",
+                    ipa: "/wɒtʃ/",
+                    spanish: "Ver / Observar (algo en movimiento durante un tiempo)",
+                    example: "We spent the evening watching a documentary on BBC.",
+                    exampleEs: "Pasamos la tarde viendo un documental en la BBC."
+                },
+                ruleEs: "'Look at' es enfocar la vista en algo estático. 'Watch' es observar algo en movimiento o evolución (película, deporte).",
+                ruleEn: "'Look at' is directing your eyes. 'Watch' is paying attention to something moving over time.",
+                quiz: {
+                    sentence: "Did you ________ the tennis match at Wimbledon yesterday?",
+                    sentenceEs: "¿Viste el partido de tenis en Wimbledon ayer?",
+                    correct: "watch",
+                    options: ["look at", "watch"],
+                    explanation: "Usamos 'watch' porque un partido de tenis es un evento con movimiento que se observa con el tiempo."
+                }
+            }
+        ];
+
+        // Speech Engine Config
+        let currentSpeechRate = 0.9;
+        let flashcardCurrentIndex = 0;
+        let flashcardFlipped = false;
+
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+        let quizAnswered = false;
+
+        // Function to speak British English Text
+        function playSpeech(text, customRate = null) {
+            if (!('speechSynthesis' in window)) {
+                alert("Speech synthesis is not supported in this browser. Try Chrome, Edge, or Safari.");
+                return;
+            }
+
+            window.speechSynthesis.cancel(); // Cancel any active speech
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = customRate || currentSpeechRate;
+
+            // Search for en-GB voice specifically
+            const voices = window.speechSynthesis.getVoices();
+            const ukVoice = voices.find(v => 
+                v.lang === 'en-GB' || 
+                v.lang === 'en_GB' || 
+                v.name.toLowerCase().includes('uk') || 
+                v.name.toLowerCase().includes('british') ||
+                v.name.toLowerCase().includes('united kingdom')
+            );
+
+            if (ukVoice) {
+                utterance.voice = ukVoice;
+            } else {
+                utterance.lang = 'en-GB';
+            }
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function updateAudioSpeed(val) {
+            currentSpeechRate = parseFloat(val);
+        }
+
+        function playAllSampleAudio() {
+            playSpeech("Welcome to confusing verb pairs. Let us practice British English pronunciation together.");
+        }
+
+        // Helper functions for playing audio safely without single-quote syntax errors in HTML attributes
+        function playPairWord(pairId, verbNum) {
+            const pair = VERB_PAIRS.find(p => p.id === pairId);
+            if (!pair) return;
+            const verb = verbNum === 1 ? pair.verb1 : pair.verb2;
+            playSpeech(verb.word);
+        }
+
+        function playPairExamples(pairId) {
+            const pair = VERB_PAIRS.find(p => p.id === pairId);
+            if (!pair) return;
+            playSpeech(`${pair.verb1.example}. ${pair.verb2.example}`);
+        }
+
+        // Render Study Library Cards
+        function renderStudyCards(pairsToRender = VERB_PAIRS) {
+            const container = document.getElementById('verbCardsContainer');
+            container.innerHTML = '';
+
+            if (pairsToRender.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400 bg-white rounded-2xl border border-dashed border-slate-300">
+                        <i data-lucide="search-x" class="w-10 h-10 mx-auto mb-2 text-slate-300"></i>
+                        <p class="font-medium text-slate-600">No verb pairs match your search query.</p>
+                        <p class="text-xs">Try searching for "borrow", "make", or "say".</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            pairsToRender.forEach(pair => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200/90 hover:shadow-md transition-all flex flex-col justify-between space-y-4";
+                
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <!-- Pair Header -->
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full border border-brand-100">
+                                Pair #${pair.id}
+                            </span>
+                            <span class="text-xs text-slate-400 font-medium">British Accent 🇬🇧</span>
+                        </div>
+
+                        <!-- Grid of Verbs -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- Verb 1 -->
+                            <div class="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/70 space-y-2 hover:bg-slate-100/60 transition-colors">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-900 text-base flex items-center gap-1.5">
+                                        ${pair.verb1.word}
+                                    </h3>
+                                    <button onclick="playPairWord(${pair.id}, 1)" title="Listen UK Pronunciation" class="p-1.5 rounded-lg bg-white border border-slate-200 text-brand-600 hover:text-brand-700 hover:bg-brand-50 transition-all shadow-2xs">
+                                        <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <div class="text-xs font-mono text-indigo-600 font-medium">IPA: ${pair.verb1.ipa}</div>
+                                <p class="text-xs font-semibold text-slate-700">${pair.verb1.spanish}</p>
+                                <div class="pt-1 text-xs text-slate-500 italic border-t border-slate-200/50">
+                                    "${pair.verb1.example}"
+                                    <div class="text-[11px] text-slate-400 not-italic mt-0.5">${pair.verb1.exampleEs}</div>
+                                </div>
+                            </div>
+
+                            <!-- Verb 2 -->
+                            <div class="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/70 space-y-2 hover:bg-slate-100/60 transition-colors">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-bold text-slate-900 text-base flex items-center gap-1.5">
+                                        ${pair.verb2.word}
+                                    </h3>
+                                    <button onclick="playPairWord(${pair.id}, 2)" title="Listen UK Pronunciation" class="p-1.5 rounded-lg bg-white border border-slate-200 text-brand-600 hover:text-brand-700 hover:bg-brand-50 transition-all shadow-2xs">
+                                        <i data-lucide="volume-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <div class="text-xs font-mono text-indigo-600 font-medium">IPA: ${pair.verb2.ipa}</div>
+                                <p class="text-xs font-semibold text-slate-700">${pair.verb2.spanish}</p>
+                                <div class="pt-1 text-xs text-slate-500 italic border-t border-slate-200/50">
+                                    "${pair.verb2.example}"
+                                    <div class="text-[11px] text-slate-400 not-italic mt-0.5">${pair.verb2.exampleEs}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Difference / Usage Rule -->
+                        <div class="p-3 bg-indigo-50/70 border border-indigo-100 rounded-xl space-y-1">
+                            <div class="flex items-center gap-1.5 text-xs font-bold text-indigo-900">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+                                <span>Diferencia clave (Key Difference):</span>
+                            </div>
+                            <p class="text-xs text-indigo-950 font-medium leading-relaxed">${pair.ruleEs}</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Bar -->
+                    <div class="flex justify-end pt-1">
+                        <button onclick="playPairExamples(${pair.id})" class="text-xs text-slate-600 hover:text-brand-600 font-medium flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 rounded-lg shadow-2xs hover:border-brand-300 transition-all">
+                            <i data-lucide="play-circle" class="w-4 h-4 text-brand-500"></i>
+                            <span>Listen Both Example Sentences</span>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            document.getElementById('pairsCount').innerText = `Showing ${pairsToRender.length} Verb Pairs`;
+            lucide.createIcons();
+        }
+
+        // Search Filter Logic
+        function filterStudyCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                renderStudyCards(VERB_PAIRS);
+                return;
+            }
+
+            const filtered = VERB_PAIRS.filter(pair => {
+                return pair.verb1.word.toLowerCase().includes(query) ||
+                       pair.verb2.word.toLowerCase().includes(query) ||
+                       pair.verb1.spanish.toLowerCase().includes(query) ||
+                       pair.verb2.spanish.toLowerCase().includes(query) ||
+                       pair.ruleEs.toLowerCase().includes(query);
+            });
+
+            renderStudyCards(filtered);
+        }
+
+        // Tab Switch Logic
+        function switchTab(tab) {
+            document.getElementById('section-study').classList.add('hidden');
+            document.getElementById('section-quiz').classList.add('hidden');
+            document.getElementById('section-flashcards').classList.add('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-300 hover:text-white hover:bg-slate-800/60";
+            });
+
+            const activeBtn = document.getElementById(`tab-${tab}`);
+            activeBtn.className = "tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 bg-brand-600 text-white shadow-sm";
+
+            document.getElementById(`section-${tab}`).classList.remove('hidden');
+
+            if (tab === 'flashcards') {
+                updateFlashcardUI();
+            } else if (tab === 'quiz') {
+                renderQuizQuestion();
+            }
+        }
+
+        // QUIZ LOGIC
+        function renderQuizQuestion() {
+            const current = VERB_PAIRS[quizCurrentIndex];
+            quizAnswered = false;
+
+            document.getElementById('questionCounter').innerText = `Question ${quizCurrentIndex + 1} of ${VERB_PAIRS.length}`;
+            document.getElementById('questionCategory').innerText = `Target Pair: ${current.verb1.word} vs ${current.verb2.word}`;
+            document.getElementById('quizSentence').innerText = current.quiz.sentence;
+            document.getElementById('quizSpanishHint').innerText = current.quiz.sentenceEs;
+
+            const feedback = document.getElementById('quizFeedback');
+            feedback.classList.add('hidden');
+            document.getElementById('nextQuestionBtn').classList.add('hidden');
+
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            current.quiz.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full py-3.5 px-4 text-center text-sm font-semibold rounded-xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-brand-400 transition-all text-slate-800 shadow-2xs focus:outline-none";
+                btn.innerText = opt;
+                btn.onclick = () => handleAnswer(opt, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            document.getElementById('quizScore').innerText = `${quizScore} / ${VERB_PAIRS.length}`;
+            lucide.createIcons();
+        }
+
+        function handleAnswer(selected, buttonElem) {
+            if (quizAnswered) return;
+            quizAnswered = true;
+
+            const current = VERB_PAIRS[quizCurrentIndex];
+            const isCorrect = selected === current.quiz.correct;
+
+            const optionsBtns = document.getElementById('quizOptions').children;
+            for (let btn of optionsBtns) {
+                btn.disabled = true;
+                if (btn.innerText === current.quiz.correct) {
+                    btn.className = "w-full py-3.5 px-4 text-center text-sm font-semibold rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 shadow-sm";
+                } else if (btn.innerText === selected && !isCorrect) {
+                    btn.className = "w-full py-3.5 px-4 text-center text-sm font-semibold rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 shadow-sm";
+                } else {
+                    btn.className = "w-full py-3.5 px-4 text-center text-sm font-semibold rounded-xl border border-slate-200 bg-slate-100 text-slate-400 opacity-60";
+                }
+            }
+
+            const feedback = document.getElementById('quizFeedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackTitle = document.getElementById('feedbackTitle');
+            const feedbackExplanation = document.getElementById('feedbackExplanation');
+            const listenBtn = document.getElementById('listenSentenceBtn');
+
+            feedback.classList.remove('hidden');
+
+            if (isCorrect) {
+                quizScore++;
+                feedback.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50/80 transition-all space-y-2";
+                feedbackIcon.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600"></i>`;
+                feedbackTitle.innerText = "¡Correcto! Well done!";
+                feedbackTitle.className = "font-bold text-sm text-emerald-900";
+            } else {
+                feedback.className = "p-4 rounded-xl border border-rose-200 bg-rose-50/80 transition-all space-y-2";
+                feedbackIcon.innerHTML = `<i data-lucide="x-circle" class="w-5 h-5 text-rose-600"></i>`;
+                feedbackTitle.innerText = `Incorrecto. La opción correcta es "${current.quiz.correct}".`;
+                feedbackTitle.className = "font-bold text-sm text-rose-900";
+            }
+
+            feedbackExplanation.innerText = current.quiz.explanation;
+
+            const fullSentence = current.quiz.sentence.replace('________', current.quiz.correct);
+            listenBtn.onclick = () => playSpeech(fullSentence);
+
+            document.getElementById('quizScore').innerText = `${quizScore} / ${VERB_PAIRS.length}`;
+            document.getElementById('nextQuestionBtn').classList.remove('hidden');
+
+            // Play audio automatically for correct response
+            playSpeech(fullSentence);
+            lucide.createIcons();
+        }
+
+        function nextQuestion() {
+            if (quizCurrentIndex < VERB_PAIRS.length - 1) {
+                quizCurrentIndex++;
+                renderQuizQuestion();
+            } else {
+                showQuizCompletion();
+            }
+        }
+
+        function showQuizCompletion() {
+            const card = document.getElementById('quizCard');
+            const percentage = Math.round((quizScore / VERB_PAIRS.length) * 100);
+            
+            card.innerHTML = `
+                <div class="text-center py-8 space-y-5">
+                    <div class="w-16 h-16 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto border-2 border-brand-200">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="text-2xl font-bold font-heading text-slate-900">Quiz Completed!</h3>
+                        <p class="text-sm text-slate-500">Has completado todos los pares de verbos confusos.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-sm mx-auto space-y-2">
+                        <div class="text-3xl font-extrabold text-brand-600">${percentage}%</div>
+                        <div class="text-xs text-slate-600 font-medium">Your Final Score: ${quizScore} out of ${VERB_PAIRS.length}</div>
+                    </div>
+
+                    <button onclick="resetQuiz()" class="px-6 py-3 bg-brand-600 text-white font-bold text-sm rounded-xl shadow hover:bg-brand-700 transition-all inline-flex items-center gap-2">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Try Again
+                    </button>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function resetQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            const quizCard = document.getElementById('quizCard');
+            
+            // Re-inject layout if it was replaced by completion screen
+            quizCard.innerHTML = `
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <span id="questionCounter" class="text-xs font-bold tracking-wider uppercase text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
+                        Question 1 of 15
+                    </span>
+                    <span id="questionCategory" class="text-xs font-medium text-slate-400">
+                        Target Pair
+                    </span>
+                </div>
+
+                <div class="py-4">
+                    <p id="quizSentence" class="text-lg sm:text-xl font-medium text-slate-800 leading-relaxed text-center"></p>
+                    <p id="quizSpanishHint" class="text-sm text-slate-500 text-center italic mt-2"></p>
+                </div>
+
+                <div id="quizOptions" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2"></div>
+
+                <div id="quizFeedback" class="hidden p-4 rounded-xl border transition-all space-y-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span id="feedbackIcon"></span>
+                            <h4 id="feedbackTitle" class="font-bold text-sm">Correct!</h4>
+                        </div>
+                        <button id="listenSentenceBtn" onclick="" class="flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-800 bg-white px-2.5 py-1 rounded-lg border border-brand-200 shadow-sm">
+                            <i data-lucide="volume-2" class="w-4 h-4"></i> Listen (UK)
+                        </button>
+                    </div>
+                    <p id="feedbackExplanation" class="text-xs sm:text-sm text-slate-600 leading-normal"></p>
+                </div>
+
+                <div class="pt-2 flex justify-end">
+                    <button id="nextQuestionBtn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-2">
+                        <span>Next Question</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+            renderQuizQuestion();
+        }
+
+        // FLASHCARD LOGIC
+        function flipFlashcard() {
+            const inner = document.getElementById('flashcardInner');
+            flashcardFlipped = !flashcardFlipped;
+            if (flashcardFlipped) {
+                inner.classList.add('rotate-y-180');
+            } else {
+                inner.classList.remove('rotate-y-180');
+            }
+        }
+
+        function updateFlashcardUI() {
+            const current = VERB_PAIRS[flashcardCurrentIndex];
+            
+            // Unflip card if flipped
+            if (flashcardFlipped) {
+                flipFlashcard();
+            }
+
+            document.getElementById('flashcardIndex').innerText = `${flashcardCurrentIndex + 1} / ${VERB_PAIRS.length}`;
+            document.getElementById('flashcardIndexBack').innerText = `${flashcardCurrentIndex + 1} / ${VERB_PAIRS.length}`;
+
+            document.getElementById('flashcardFrontTitle').innerHTML = `${current.verb1.word} <span class="text-slate-400 font-light">vs</span> ${current.verb2.word}`;
+
+            document.getElementById('fcVerb1').innerText = current.verb1.word;
+            document.getElementById('fcIpa1').innerText = current.verb1.ipa;
+            document.getElementById('fcSpan1').innerText = `${current.verb1.spanish} — Ex: "${current.verb1.example}"`;
+
+            document.getElementById('fcVerb2').innerText = current.verb2.word;
+            document.getElementById('fcIpa2').innerText = current.verb2.ipa;
+            document.getElementById('fcSpan2').innerText = `${current.verb2.spanish} — Ex: "${current.verb2.example}"`;
+
+            document.getElementById('fcRule').innerText = current.ruleEs;
+        }
+
+        function nextFlashcard() {
+            flashcardCurrentIndex = (flashcardCurrentIndex + 1) % VERB_PAIRS.length;
+            updateFlashcardUI();
+        }
+
+        function prevFlashcard() {
+            flashcardCurrentIndex = (flashcardCurrentIndex - 1 + VERB_PAIRS.length) % VERB_PAIRS.length;
+            updateFlashcardUI();
+        }
+
+        function playFlashcardBoth() {
+            const current = VERB_PAIRS[flashcardCurrentIndex];
+            playSpeech(`${current.verb1.word}. ${current.verb1.example}. ${current.verb2.word}. ${current.verb2.example}.`);
+        }
+
+        // Initialize App on DOM Load
+        window.onload = function() {
+            // Load Lucide Icons
+            lucide.createIcons();
+            // Render Study Cards
+            renderStudyCards();
+        }
+    </script>
+</body>
+</html>
